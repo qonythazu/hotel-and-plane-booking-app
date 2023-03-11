@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HalamanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HalamanController::class, 'index']);
+Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin']);
+Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna']);
+Route::get('/form_tambah_pengguna', [HalamanController::class, 'form_tambah_pengguna']);
+Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik']);
+Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik']);

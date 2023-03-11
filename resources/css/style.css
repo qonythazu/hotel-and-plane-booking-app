@@ -1,0 +1,16 @@
+html, body {
+    height: 100%;
+}
+
+.display-4 {
+    font-weight: bold;
+}
+
+.card-body-icon {
+    position: absolute;
+    z-index: 0;
+    right: 20px;
+    bottom: 2px;
+    opacity: 0.4;
+    font-size: 75px;
+}
