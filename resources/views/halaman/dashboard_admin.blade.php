@@ -1,3 +1,4 @@
+
 @extends('layout/app')
 
 @section('content')
@@ -19,7 +20,7 @@
                     </div>
                     <h4 class="card-title">PENGGUNA</h4>
                     <div class="display-4">11</div>
-                    <a href="tabel_pengguna.html"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
+                    <a href="/tabel_pengguna"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
             <div class="card bg-success ms-3 mb-3" style="width: 15rem;">

@@ -1,0 +1,29 @@
+html,
+body {
+    height: 100%;
+}
+
+.formlogin {
+    box-sizing: border-box;
+    width: 600px;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: solid gainsboro;
+    border-radius: 10px;
+}
+
+.display-4 {
+    font-weight: bold;
+}
+
+.card-body-icon {
+    position: absolute;
+    z-index: 0;
+    right: 20px;
+    bottom: 2px;
+    opacity: 0.4;
+    font-size: 75px;
+}
