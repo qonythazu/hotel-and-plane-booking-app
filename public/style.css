@@ -1,6 +1,9 @@
 html,
 body {
     height: 100%;
+    background: url('img/bg.jpg');
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
 }
 
 .formlogin {
@@ -11,8 +14,27 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border: solid gainsboro;
+    border: solid #f1bcd7;
     border-radius: 10px;
+    background-color: #f7c8e0;
+}
+
+.formlogin h2 {
+    color: white;
+}
+
+.formlogin .btn {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.form-control::-webkit-input-placeholder {
+    color: #f7c8e0;
+}
+
+.formlogin .btn:hover {
+    background-color: #f1bcd7;
+    color: white;
 }
 
 .display-4 {
@@ -26,4 +48,45 @@ body {
     bottom: 2px;
     opacity: 0.4;
     font-size: 75px;
+}
+
+.navbar {
+    background:  #e78bbb;
+}
+
+.navbar h4 {
+    font-weight: bold;
+}
+
+.navbar .btn:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.dasboard h3 {
+    font-weight: bold;
+}
+
+.table .btn-a {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.table .btn:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.data-pengguna{
+    font-weight: bold;
+}
+
+.dasboard .ms-1 {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.dasboard .ms-1:hover {
+    background-color: #f1bcd7;
+    color: white;
 }
