@@ -13,7 +13,7 @@
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <button type="submit" class="btn btn-primary">Masuk</button>
-                    <a href="/dashboard_admin">Masuk</a>
+                    <a href="/halaman_mitra">Masuk</a>
                 </div>
             </form>
         </div>

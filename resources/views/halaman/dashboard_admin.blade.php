@@ -54,8 +54,8 @@
                 </div>
             </div>
         </div>
-        <a href="isi_uang_elektronik.html" class="btn btn-primary ms-1">Isi Uang Elektronik</a>
-        <a href="tarik_uang_elektronik.html" class="btn btn-primary ms-1">Tarik Uang Elektronik</a>
+        <a href="/isi_uang_elektronik" class="btn btn-primary ms-1">Isi Uang Elektronik</a>
+        <a href="/tarik_uang_elektronik" class="btn btn-primary ms-1">Tarik Uang Elektronik</a>
     </div>
 @endsection
     
