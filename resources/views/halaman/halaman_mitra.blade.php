@@ -15,8 +15,8 @@
     </div>
     <div id="table-pengguna" class="p-5">
         <h4>Data Produk</h4>
-        <a href="form_tambah_produk.html" class="btn btn-primary my-2">Tambah</a>
-        <table class="table table-bordered">
+        <a href="/tambah_produk" class="btn btn-primary my-2">Tambah</a>
+        <table class="table table-bordered"> 
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -26,7 +26,7 @@
                 <th scope="col">Action</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody> 
             <tr>
                 <th scope="row">1</th>
                 <td>Grand Sawit</td>
