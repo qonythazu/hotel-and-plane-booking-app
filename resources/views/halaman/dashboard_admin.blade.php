@@ -2,14 +2,6 @@
 @extends('layout/app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand text text-white" href="#"><h4>Booking App</h4></a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-light">Admin</button>
-            </form>
-        </div>
-    </nav>
     <div class="col-md-10 p-5 pt-5 dasboard">
         <h3>DASHBOARD</h3><hr>
         <div class="row text-white">

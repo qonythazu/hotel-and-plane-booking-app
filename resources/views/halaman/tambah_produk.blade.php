@@ -1,14 +1,6 @@
 @extends('layout/app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand text text-white" href="#"><h4>Booking App</h4></a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-light" type="submit">Mitra1</button>
-            </form>
-        </div>
-    </nav>
     <div class="formproduk p-5">
         <form>
             <h3>Form Tambah Produk</h3><hr>

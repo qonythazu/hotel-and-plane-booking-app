@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\SessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +29,7 @@ Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra']);
 Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk']);
 Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel']);
 Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_plane']);
+
+Route::get('/sesi', [SessionController::class, 'index']);
+Route::post('/sesi/login', [SessionController::class, 'login']);
+Route::get('/sesi/logout', [SessionController::class, 'logout']);

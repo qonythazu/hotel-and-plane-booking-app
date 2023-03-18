@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 class HalamanController extends Controller
 {
-    function index(){
-        return view("halaman/index");
-    }
     function dashboard_admin(){
         return view("halaman/dashboard_admin");
     }

@@ -1,14 +1,6 @@
 @extends('layout/app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg ">
-        <div class="container-fluid">
-            <a class="navbar-brand text text-white" href="#"><h4>Booking App</h4></a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-light" type="submit">Admin</button>
-            </form>
-        </div>
-    </nav>
     <div id="table-pengguna" class="p-5 table">
         <h4 class="data-pengguna">Data Pengguna</h4>
         <a href="form_tambah_pengguna.html" class="btn btn-a btn-outline-light my-2">Tambah</a>

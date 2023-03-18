@@ -1,14 +1,6 @@
 @extends('layout/app')
 
 @section('content')
-    <nav class="navbar navbar-expand-lg bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand text text-white" href="#"><h4>Booking App</h4></a>
-            <form class="d-flex" role="search">
-                <button class="btn btn-outline-light">Mitra1</button>
-            </form>
-        </div>
-    </nav>
     <div class="saldo-anda bg-secondary m-3 p-3 text-white rounded-2 text-center">
         <h4>Saldo Anda</h4>
         <h2>Rp1.000.000,00</h2>
