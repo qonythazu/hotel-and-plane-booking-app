@@ -20,21 +20,30 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+// PUNYA ADMIN //
+Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin'])->middleware('auth');
+Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
+Route::get('/form_tambah_pengguna', [addUserController::class, 'index'])->middleware('auth');
+Route::post('/form_tambah_pengguna', [addUserController::class, 'store']);
+Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 
-Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin']);
-Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna']);
-// Route::get('/form_tambah_pengguna', [HalamanController::class, 'form_tambah_pengguna']);
-Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik']);
-Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik']);
-Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra']);
-Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk']);
-Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel']);
-Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_plane']);
+// PUNYA PENGGUNA //
+Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
+Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
 
-Route::get('/', [SessionController::class, 'index']);
+// PUNYA MITRA //
+Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra'])->middleware('auth');
+Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik'])->middleware('auth');
+
+// PUNYA MITRA & ADMIN //
+Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk'])->middleware('auth');
+
+// PUNYA UMUM //
+Route::get('/dashboard', [HalamanController::class, 'dashboard'])->middleware('auth');
+Route::get('/', [SessionController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sesi/login', [SessionController::class, 'login']);
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
 
-Route::get('/form_tambah_pengguna', [addUserController::class, 'index']);
-Route::post('/form_tambah_pengguna', [addUserController::class, 'store']);
+
+
 

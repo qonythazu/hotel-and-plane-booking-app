@@ -9,7 +9,7 @@ class addUserController extends Controller
 {
     //
     public function index(){
-        return view('halaman/form_tambah_pengguna');
+        return view('halaman/admin/form_tambah_pengguna');
     }
 
     public function store(Request $request)
@@ -21,6 +21,7 @@ class addUserController extends Controller
         ]);
 
         $datavalid['password'] = bcrypt($datavalid['password']);
+        // $datavalid['role'] = 
 
         User::create($datavalid);
         $request->session()->flash('success', 'Data Berhasil Ditambahkan!');

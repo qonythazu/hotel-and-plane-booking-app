@@ -14,7 +14,7 @@ class SessionController extends Controller
 
     function login(Request $request){
         $request->validate([
-            'email'=>'required',
+            'email'=>'required|email:dns',
             'password'=>'required'
         ], [
             'email.required'=>'Email Wajib Diisi!',
@@ -37,12 +37,14 @@ class SessionController extends Controller
             }
 
         } else {
-            return redirect('/')->withErrors('Email atau Password tidak valid');
+            return back()->with('loginError','Email atau Password tidak valid');
         }
     }
 
     function logout(){
         Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         return redirect('/')->with('success', 'Berhasil Logout');
     }
 }

@@ -6,6 +6,10 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 .formlogin {
     box-sizing: border-box;
     width: 600px;
@@ -17,6 +21,11 @@ body {
     border: solid #f1bcd7;
     border-radius: 10px;
     background-color: #f7c8e0;
+}
+
+.formlogin input {
+    margin-top: 10px;
+    border-radius: 10;
 }
 
 .formlogin h2 {
