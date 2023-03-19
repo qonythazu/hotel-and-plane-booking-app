@@ -1,9 +1,17 @@
 @extends('layout/app')
 
 @section('content')
-    <div id="table-pengguna" class="p-5 table">
+    <div id="table -pengguna" class="p-5 table">
+
+        @if(session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
         <h4 class="data-pengguna">Data Pengguna</h4>
-        <a href="form_tambah_pengguna.html" class="btn btn-a btn-outline-light my-2">Tambah</a>
+        <a href="/form_tambah_pengguna" class="btn btn-a btn-outline-light my-2">Tambah</a>
         <table class="table table-bordered table-light">
             <thead>
             <tr>

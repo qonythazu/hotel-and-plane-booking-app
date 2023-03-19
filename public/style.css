@@ -1,9 +1,9 @@
 html,
 body {
     height: 100%;
-    background: url('img/bg.jpg');
+    background: url("img/bg.jpg");
     background-size: cover;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 .formlogin {
@@ -51,7 +51,7 @@ body {
 }
 
 .navbar {
-    background:  #e78bbb;
+    background: #e78bbb;
 }
 
 .navbar h4 {
@@ -77,7 +77,7 @@ body {
     color: white;
 }
 
-.data-pengguna{
+.data-pengguna {
     font-weight: bold;
 }
 
@@ -89,4 +89,33 @@ body {
 .dasboard .ms-1:hover {
     background-color: #f1bcd7;
     color: white;
+}
+
+.bgback {
+    background-color: #e673ae;
+}
+
+.form-adduser .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-adduser .btn {
+    background-color: #e78bbb;
+    color: white;
+    width: 100px;
+}
+
+.form-adduser .btn:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.form-adduser input {
+    margin-top: 10px;
+    border-radius: 10;
+}
+
+.formselect {
+    margin-top: 10px;
+    border-radius: 10;
 }

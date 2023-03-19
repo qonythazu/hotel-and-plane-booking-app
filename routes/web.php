@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\addUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin']);
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna']);
-Route::get('/form_tambah_pengguna', [HalamanController::class, 'form_tambah_pengguna']);
+// Route::get('/form_tambah_pengguna', [HalamanController::class, 'form_tambah_pengguna']);
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik']);
 Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik']);
 Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra']);
@@ -33,3 +34,7 @@ Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_pla
 Route::get('/', [SessionController::class, 'index']);
 Route::post('/sesi/login', [SessionController::class, 'login']);
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
+
+Route::get('/form_tambah_pengguna', [addUserController::class, 'index']);
+Route::post('/form_tambah_pengguna', [addUserController::class, 'store']);
+

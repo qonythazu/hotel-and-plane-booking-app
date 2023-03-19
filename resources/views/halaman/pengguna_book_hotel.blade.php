@@ -1,7 +1,7 @@
 @extends('layout/app')
 
 @section('content')
-    <div class="saldo-anda bg-secondary m-3 p-3 text-white rounded-2 text-center">
+    <div class="saldo-anda bgback m-3 p-3 text-white rounded-2 text-center">
         <h4>Saldo Anda</h4>
         <h2>Rp1.000.000,00</h2>
     </div>

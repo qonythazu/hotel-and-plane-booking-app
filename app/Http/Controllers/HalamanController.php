@@ -12,9 +12,6 @@ class HalamanController extends Controller
     function tabel_pengguna(){
         return view("halaman/tabel_pengguna");
     }
-    function form_tambah_pengguna(){
-        return view("halaman/form_tambah_pengguna");
-    }
     function isi_uang_elektronik(){
         return view("halaman/isi_uang_elektronik");
     }
