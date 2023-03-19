@@ -3,7 +3,9 @@
         <a class="navbar-brand text text-white" href="#"><h4>Booking App</h4></a>
         
         <form class="d-flex" role="search">
-            <button class="btn btn-outline-light">Admin</button>
+            @auth
+              <button class="btn btn-outline-light">{{Auth::user()->name}}</button>
+            @endauth
             <ul class="nav nav-pills">
                 <li class="nav-item">
                     <a href="/sesi/logout" class="nav-link text-white">Logout</a>

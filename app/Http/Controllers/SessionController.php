@@ -37,12 +37,12 @@ class SessionController extends Controller
             }
 
         } else {
-            return redirect('sesi')->withErrors('Email atau Password tidak valid');
+            return redirect('/')->withErrors('Email atau Password tidak valid');
         }
     }
 
     function logout(){
         Auth::logout();
-        return redirect('sesi')->with('success', 'Berhasil Logout');
+        return redirect('/')->with('success', 'Berhasil Logout');
     }
 }

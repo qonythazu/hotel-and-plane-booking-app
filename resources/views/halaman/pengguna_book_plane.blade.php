@@ -7,7 +7,7 @@
     </div>
     <div class="column">
         <div class="d-flex justify-content-start">
-            <a href="pengguna_book_hotel.html" class="btn btn-primary ms-3">Hotel</a>
+            <a href="/pengguna_book_hotel" class="btn btn-primary ms-3">Hotel</a>
             <a href="#" class="btn btn-primary ms-2 disabled" aria-disabled="true">Pesawat</a>
         </div>
         <div class="booking-pesawat">

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [HalamanController::class, 'index']);
+
 Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin']);
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna']);
 Route::get('/form_tambah_pengguna', [HalamanController::class, 'form_tambah_pengguna']);
@@ -30,6 +30,6 @@ Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk']);
 Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel']);
 Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_plane']);
 
-Route::get('/sesi', [SessionController::class, 'index']);
+Route::get('/', [SessionController::class, 'index']);
 Route::post('/sesi/login', [SessionController::class, 'login']);
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
