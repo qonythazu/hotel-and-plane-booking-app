@@ -4,12 +4,12 @@
 <main>
 
   <section class="py-5 text-center container">
-    <div class="row py-lg-5 bg-light">
+    <div class="row py-lg-5 bg-light rounded">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light"><strong>Booking App</strong></h1>
-        <p class="lead text-muted">web ini </p>
+        <h1 class="h1 fw-light"><strong>Booking App</strong></h1>
+        <p class="lead text-muted">web ini menyediakan layanan pemesanan tiket pesawat dan hotel secara daring dengan fokus perjalanan domestik di Kalimantan Timur</p>
         <p>
-          <a href="#" class="btn btn-primary my-2">let's get started</a>
+          <button type="submit" name="submit" class="btn2 btn btn-outline-light">Let's Get Started</button>
         </p>
       </div>
     </div>
@@ -21,28 +21,29 @@
       <div class="row row-cols-1 row-cols-sm-2 ">
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <img src="img/plane.png" class="rounded-top" alt="" width="635px">
             <div class="card-body">
               <p class="card-text">Anda dapat dengan mudah memesan tiket pesawat melalui Booking App ini!. Tunggu apa lagi?</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Booking Sekarang</button>
+                <div class="but btn-group">
+                  <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button>
                 </div>
-                <small class="text-muted">pesawat</small>
+                <small class="text-muted mt-4"><i class="fas fa-plane-departure"></i></small>
               </div>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <img src="img/hotel.png" class="rounded-top" alt="" width="635px">
+            <!-- <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> -->
             <div class="card-body">
               <p class="card-text">Tidak hanya tiket pesawat. dengan Booking App anda juga bisa memesan kamar hotel secara praktis dan mudah</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Booking Sekarang</button>
+                <div class="but btn-group">
+                  <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button>
                 </div>
-                <small class="text-muted">hotel</small>
+                <small class="text-muted mt-4"><i class="fas fa-suitcase"></i></small>
               </div>
             </div>
           </div>
@@ -52,10 +53,10 @@
   </div>
 </main>
 
-<footer class="container py-5">
-  <div class="row">
+<footer class="bg-light mt-5 py-3">
+  <div class="row container">
     <div class="col-12 col-md-6">
-        <small class="d-block mb-3 text-muted">&copy; 2023</small>
+      <small class="d-block mb-3 text-muted">&copy; 2023</small>
     </div>
     <div class="col-6 col-md">
       <h5>Company</h5>

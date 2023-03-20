@@ -14,6 +14,7 @@
         @include('komponen/navbar')
     @endif
     @yield('content')
+    <!-- <script src="https://kit.fontawesome.com/91e0812510.js" crossorigin="anonymous"></script> -->
     <script src="https://kit.fontawesome.com/2efe7cc7ca.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>

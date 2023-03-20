@@ -37,6 +37,31 @@ a:link {
     color: white;
 }
 
+.rounded .btn2 {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.rounded .btn2:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.rounded .h1 {
+    color: #e78bbb;
+}
+
+.but .btn3 {
+    background-color: white;
+    border: 1px solid #9fa6b2;
+    color: #9fa6b2;
+}
+
+.but .btn3:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
 .form-control::-webkit-input-placeholder {
     color: #f7c8e0;
 }
