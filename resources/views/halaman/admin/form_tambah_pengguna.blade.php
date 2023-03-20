@@ -38,10 +38,7 @@
             
             <div class="formselect">
                 <select class="form-select" aria-label="Default select example" name="role" required>
-                    <option selected>Role</option>
-                    <option value="admin">Admin</option>
-                    <option value="mitra">Mitra</option>
-                    <option value="pengguna">Pengguna</option>
+                    <option selected>Pengguna</option>
                 </select>
             </div>
             <button class="w-100 btn btn-outline-light mt-4" type="submit">Tambah</button>
