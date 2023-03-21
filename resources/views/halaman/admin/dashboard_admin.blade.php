@@ -4,8 +4,8 @@
 @section('content')
     <div class="col-md-10 p-5 pt-5 dasboard">
         <h3>DASHBOARD</h3><hr>
-        <div class="row text-white">
-            <div class="card bg-dark ms-3 mb-3" style="width: 15rem;">
+        <div class="row text-white dasboard">
+            <div class="card bg1 ms-3 mb-3" style="width: 15rem;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fa-solid fa-user"></i>
@@ -15,7 +15,7 @@
                     <a href="/tabel_pengguna"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
-            <div class="card bg-success ms-3 mb-3" style="width: 15rem;">
+            <div class="card bg2 ms-3 mb-3" style="width: 15rem;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fa fa-user-tie"></i>
@@ -25,7 +25,7 @@
                     <a href=""><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
-            <div class="card bg-warning ms-3 mb-3" style="width: 15rem;">
+            <div class="card bg3 ms-3 mb-3" style="width: 15rem;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fa-solid fa-hotel"></i>
@@ -35,7 +35,7 @@
                     <a href=""><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
-            <div class="card bg-danger ms-3 mb-3" style="width: 15rem;">
+            <div class="card bg4 ms-3 mb-3" style="width: 15rem;">
                 <div class="card-body">
                     <div class="card-body-icon">
                         <i class="fa-solid fa-plane"></i>
