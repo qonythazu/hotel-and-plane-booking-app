@@ -3,6 +3,7 @@
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\addUserController;
+use App\Http\Controllers\addMitraController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,9 @@ Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->mid
 Route::get('/form_tambah_pengguna', [addUserController::class, 'index'])->middleware('auth');
 Route::post('/form_tambah_pengguna', [addUserController::class, 'store']);
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
+Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
+Route::get('/form_tambah_mitra', [addMitraController::class, 'index'])->middleware('auth');
+Route::post('/form_tambah_mitra', [addMitraController::class, 'store']);
 
 // PUNYA PENGGUNA //
 Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
