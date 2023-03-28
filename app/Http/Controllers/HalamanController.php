@@ -33,4 +33,8 @@ class HalamanController extends Controller
     function dashboard(){
         return view("halaman/dashboard");
     }
+    function tabel_mitra(){
+        return view("halaman/admin/tabel_mitra");
+    }
+    
 }

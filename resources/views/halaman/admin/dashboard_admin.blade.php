@@ -22,7 +22,7 @@
                     </div>
                     <h4 class="card-title">MITRA</h4>
                     <div class="display-4">2</div>
-                    <a href=""><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
+                    <a href="/tabel_mitra"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
             <div class="card bg3 ms-3 mb-3" style="width: 15rem;">
