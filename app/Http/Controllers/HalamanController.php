@@ -3,15 +3,30 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\transaksi;
+
+use DB;
 
 class HalamanController extends Controller
 {
     function dashboard_admin(){
         return view("halaman/admin/dashboard_admin");
     }
+    
+    function akun(){
+        $data = DB::table('Users')
+            ->leftjoin('transaksis','transaksis.user_id','=','Users.id')
+            ->leftjoin('roles','roles.id','=','Users.role_id')
+            ->select('Users.name as name','Users.email as email','roles.role as role', 'transaksis.saldo_akhir as saldo_akhir')
+            ->get();
+        return view("halaman/admin/pengaturan_akun")->with('data', $data);
+    }
+
     function tabel_pengguna(){
         return view("halaman/admin/tabel_pengguna");
     }
+    
     function isi_uang_elektronik(){
         return view("halaman/admin/isi_uang_elektronik");
     }

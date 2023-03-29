@@ -37,32 +37,6 @@
                     </span>
                 </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Destiera</td>
-                <td>dhesty</td>
-                <td>1@2#</td>
-                <td>Rp10.000</td>
-                <td>
-                    <span>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                        <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Putri Oktatriani</td>
-                <td>phoetry</td>
-                <td>1@2#</td>
-                <td>Rp10.000</td>
-                <td>
-                    <span>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                        <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span>
-                </td>
-            </tr>
             </tbody>
         </table>
     </div>
