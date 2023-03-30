@@ -14,6 +14,7 @@ class addMitraController extends Controller
 
     public function store(Request $request)
     {
+        // return request()->all();
         $datavalid = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
