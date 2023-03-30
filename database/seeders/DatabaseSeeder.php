@@ -9,6 +9,7 @@ use App\Models\transaksi;
 use App\Models\produk;
 use App\Models\detail_produk;
 use App\Models\jadwal;
+use App\Models\role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -28,42 +29,53 @@ class DatabaseSeeder extends Seeder
 
 
         // --data testing-- //
-
+        
+        // MEMBUAT USER
+        role::create([
+            'role'=> 'admin'
+        ]);
+        role::create([
+            'role'=> 'mitra'
+        ]);
+        role::create([
+            'role'=> 'pengguna'
+        ]);
+        
         // MEMBUAT USER
 
         User::create([
             'name'=> 'Destiera Fitryani',
             'email'=> 'destiera@gmail.com',
             'password'=> bcrypt('desti0012'),
-            'role'=> 'admin'
+            'role_id'=> 1
         ]);
 
         User::create([
             'name'=> 'Putri Qonytha',
             'email'=> 'pqonita@gmail.com',
             'password'=> bcrypt('qonytazu'),
-            'role'=> 'mitra'
+            'role_id'=> 2
         ]);
 
         User::create([
             'name'=> 'Shinta Adelia',
             'email'=> 'shintaa@gmail.com',
             'password'=> bcrypt('sh1nt4'),
-            'role'=> 'mitra'
+            'role_id'=> 2
         ]);
 
         User::create([
             'name'=> 'Nadhira Rizqana',
             'email'=> 'nadh@gmail.com',
             'password'=> bcrypt('nara166'),
-            'role'=> 'pengguna'
+            'role_id'=> 3
         ]);
 
         User::create([
             'name'=> 'Putri Oktatriani',
             'email'=> 'putriokta@gmail.com',
             'password'=> bcrypt('putri05'),
-            'role'=> 'pengguna'
+            'role_id'=> 3
         ]);
         
         // MEMBUAT EWALLET

@@ -3,6 +3,7 @@
 @section('content')
 <div class="row justify-content-center mt-5">
     <div class="col-md-5">
+        <h1 class="text-center mb-4">Tambah Akun Baru</h1>
         <main class="form-adduser">
           <form action="/form_tambah_pengguna" method="post">
             @csrf
@@ -37,11 +38,18 @@
             </div>
             
             <div class="formselect">
-                <select class="form-select" aria-label="Default select example" name="role" required>
-                    <option selected>Pengguna</option>
+                <select class="form-select" aria-label="Default select example" name="role_id" required>
+                    <option> </option>
+                    @foreach ($roles as $role)
+                    @if($role['id']>1)
+                    <option value="{{ $role->id }}"> {{ $role->role }} </option>
+                    @endif
+                    @endforeach
                 </select>
             </div>
+
             <button class="w-100 btn btn-outline-light mt-4" type="submit">Tambah</button>
+            <a href="/pengaturan_akun" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
           </form>
         </main>
     </div>

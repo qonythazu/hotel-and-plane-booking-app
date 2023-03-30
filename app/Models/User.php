@@ -38,15 +38,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function bookings(){
+    public function booking(){
         return $this->hasMany(booking::class);
     }
 
-    public function produks(){
+    public function produk(){
         return $this->hasMany(produk::class);
     }
 
-    public function transaksis(){
+    public function transaksi(){
         return $this->belongsTo(transaksi::class);
+    }
+
+    public function role(){
+        return $this->belongsTo(role::class);
     }
 }

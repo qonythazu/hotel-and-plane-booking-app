@@ -15,15 +15,15 @@ class produk extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function detail_bookings(){
+    public function detail_booking(){
         return $this->hasMany(detail_booking::class);
     }
 
-    public function detail_produks(){
+    public function detail_produk(){
         return $this->hasMany(detail_produk::class);
     }
 
-    public function jadwals(){
+    public function jadwal(){
         return $this->hasMany(jadwal::class);
     }
 }
