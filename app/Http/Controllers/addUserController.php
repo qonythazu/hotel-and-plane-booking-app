@@ -29,6 +29,6 @@ class addUserController extends Controller
         // return request()->all();
         User::create($datavalid);
         $request->session()->flash('success', 'Data Berhasil Ditambahkan!');
-        return redirect('/tabel_pengguna');
+        return redirect('/pengaturan_akun');
     }
 }

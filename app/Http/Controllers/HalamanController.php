@@ -16,9 +16,8 @@ class HalamanController extends Controller
     
     function akun(){
         $data = DB::table('Users')
-            ->leftjoin('transaksis','transaksis.user_id','=','Users.id')
-            ->leftjoin('roles','roles.id','=','Users.role_id')
-            ->select('Users.name as name','Users.email as email','roles.role as role', 'transaksis.saldo_akhir as saldo_akhir')
+            ->join('roles','roles.id','=','Users.role_id')
+            ->select('Users.name as name','Users.email as email','roles.role as role')
             ->get();
         return view("halaman/admin/pengaturan_akun")->with('data', $data);
     }
