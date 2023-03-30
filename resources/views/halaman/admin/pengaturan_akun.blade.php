@@ -14,7 +14,6 @@
                 <th scope="col">Nama Pengguna</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
-                <th scope="col">Saldo</th>
                 <th scope="col" colspan="2" class="text-center">Action</th>
             </tr>
             </thead>
@@ -25,7 +24,6 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->role }}</td>
-                <td>{{ $item->saldo_akhir }}</td>
                 <td>
                     <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </td>
