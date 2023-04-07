@@ -43,7 +43,3 @@ Route::get('/dashboard', [HalamanController::class, 'dashboard'])->middleware('a
 Route::get('/', [SessionController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sesi/login', [SessionController::class, 'login']);
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
-
-
-
-
