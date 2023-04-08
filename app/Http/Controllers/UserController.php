@@ -20,64 +20,58 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-
-        // $datavalid = $request->validate([
-        //     'name' => 'required|max:255',
-        //     'email' => 'required|email:dns|unique:users',
-        //     'password' => 'required'
-        // ]);
-
-        // $datavalid['password'] = bcrypt($datavalid['password']);
-        // // $datavalid['role'] = 
-
-        // User::create($datavalid);
-        // $request->session()->flash('success', 'Data berhasil ditambahkan!');
-        // // return redirect('/tabel_pengguna');
-        // return response()->json([
-        //     'data' => $datavalid
-        // ]);
-
-        $users = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
+        $datavalid = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required',
+            'role_id' => 'required'
         ]);
+
+        $datavalid['password'] = bcrypt($datavalid['password']);
+
+        $users = User::create($datavalid);
 
         return response()->json([
-            'data' => $users
-        ]);
+            'message' => 'User created successfully',
+            'user' => $users
+        ], 201);
     }
 
-    public function show(User $users){
+    public function show($id)
+    {
+        $users = User::find($id);
+
+        if (!$users) {
+            return response()->json([
+                'message' => 'User not found'
+            ], 404);
+        }
+
         return response()->json([
             'data' => $users
-        ]);
+        ], 200);
     }
 
-    public function update(Request $request, User $users){
-        // $datavalid = $request->validate([
-        //     'name' => 'required|max:255',
-        //     'email' => 'required|email:dns|unique:users',
-        //     'password' => 'required'
-        // ]);
+    public function update(Request $request, User $user)
+    {
+        $datavalid = $request->validate([
+            'name' => 'max:255',
+            'email' => 'email:dns|unique:users,email,'.$user->id,
+            'password' => 'sometimes'
+        ]);
 
-        // $datavalid['password'] = bcrypt($datavalid['password']);
-        // // $datavalid['role'] = 
+        if (isset($datavalid['password'])) {
+            $datavalid['password'] = bcrypt($datavalid['password']);
+        }
 
-        // User::save($datavalid);
-        // $request->session()->flash('success', 'Data berhasil diubah!');
-        // return redirect('/tabel_pengguna');
-        // return response()->json([
-        //     'data' => $users
-        // ]);
+        $user->name = $datavalid['name'];
+        $user->email = $datavalid['email'];
+        $user->password = $datavalid['password'];
 
-        $users->name = $request->name;
-        $users->email = $request->email;
-        $users->password = $request->password;
-        $users->save();
+        $user->save();
 
         return response()->json([
-            'data' => $users
+            'data' => $user
         ]);
     }
 
@@ -86,5 +80,5 @@ class UserController extends Controller
         return response()->json([
             'message' => 'user deleted'
         ], 204);
-    }
+    }   
 }
