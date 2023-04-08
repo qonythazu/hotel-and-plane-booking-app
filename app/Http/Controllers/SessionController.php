@@ -28,11 +28,11 @@ class SessionController extends Controller
 
         if(Auth::attempt($infologin)){
             
-            if (auth()->user()->role == 'admin') {
+            if (auth()->user()->role_id == 1) {
                 return redirect('dashboard_admin')->with('success', 'Berhasil Login');
-            } elseif (auth()->user()->role == 'mitra') {
+            } elseif (auth()->user()->role_id == 2) {
                 return redirect('halaman_mitra')->with('success', 'Berhasil Login');
-            } elseif (auth()->user()->role == 'pengguna'){
+            } elseif (auth()->user()->role_id == 3){
                 return redirect('pengguna_book_hotel')->with('success', 'Berhasil Login');
             }
 
