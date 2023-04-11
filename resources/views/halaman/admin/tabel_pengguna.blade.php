@@ -16,26 +16,26 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama Pengguna</th>
-                <th scope="col">username</th>
-                <th scope="col">password</th>
+                <th scope="col">Email</th>
                 <th scope="col">Uang Elektronik</th>
                 <th scope="col">Action</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Shinta Adelia</td>
-                <td>sshynthah</td>
-                <td>1@2#</td>
-                <td>Rp10.000</td>
-                <td>
-                    <span>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                        <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span>
-                </td>
-            </tr>
+                @foreach ($data as $d => $item)
+                    <tr>
+                        <th scope="row">{{ $d+1 }}</th>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->email }}</td>
+                        <td>{{ $item->saldo }}</td>
+                        <td>
+                            <span>
+                                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
