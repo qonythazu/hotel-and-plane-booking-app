@@ -28,6 +28,7 @@ Route::get('/form_tambah_pengguna', [addUserController::class, 'index'])->middle
 Route::post('/form_tambah_pengguna', [addUserController::class, 'store']);
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
+Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
 
 // PUNYA PENGGUNA //
 Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');

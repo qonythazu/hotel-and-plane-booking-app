@@ -50,5 +50,7 @@ class HalamanController extends Controller
     function tabel_mitra(){
         return view("halaman/admin/tabel_mitra");
     }
-    
+    function tabel_hotel(){
+        return view("halaman/admin/tabel_hotel");
+    }
 }

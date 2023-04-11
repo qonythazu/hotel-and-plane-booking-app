@@ -1,7 +1,7 @@
 @extends('layout/app')
 
 @section('content')
-    <div id="table -pengguna" class="p-5 table">
+    <div id="table -hotel" class="p-5 table">
 
         @if(session()->has('success'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -10,30 +10,30 @@
         </div>
         @endif
 
-        <h4 class="data-pengguna">Data Pengguna</h4>
+        <h4 class="data-hotel">Data Hotel</h4>
         <table class="table table-bordered table-light">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nama Pengguna</th>
-                <th scope="col">username</th>
-                <th scope="col">password</th>
-                <th scope="col">Uang Elektronik</th>
-                <th scope="col">Action</th>
+                <th scope="col">Nama Hotel</th>
+                <th scope="col">Kota</th>
+                <th scope="col">Kamar Tersedia</th>
+                <th scope="col">Tanggal Tersedia</th>
+                <th scope="col">Harga kamar</th>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <th scope="row">1</th>
-                <td>Shinta Adelia</td>
-                <td>sshynthah</td>
-                <td>1@2#</td>
-                <td>Rp10.000</td>
-                <td>
-                    <span>
+                <td>Grand Citra</td>
+                <td>Balikpapan</td>
+                <td>12</td>
+                <td>10-04-2023</td>
+                <td>250000</td>
+                    {{-- <span>
                         <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                         <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span>
+                    </span> --}}
                 </td>
             </tr>
             </tbody>

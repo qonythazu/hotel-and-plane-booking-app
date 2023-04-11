@@ -5,7 +5,7 @@
             @csrf
             @auth
                 @if(Auth::user()->role_id==1)
-                <button class="btn btn-outline-light">Admin</button>
+                <a href="/dashboard_admin" class="btn btn-outline-light">Admin</a>
                 @elseif(Auth::user()->role_id==2)
                 <button class="btn btn-outline-light">{{Auth::user()->name}} | User</button>
                 @else
