@@ -25,6 +25,7 @@
             </thead>
             <tbody>
             <tr>
+
                 <th scope="row">1</th>
                 <td>Shinta Adelia</td>
                 <td>sshynthah</td>
