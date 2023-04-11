@@ -4,31 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\role;
 
-class addUserController extends Controller
+class addMitraController extends Controller
 {
     //
     public function index(){
-        return view('halaman/admin/form_tambah_pengguna', [
-            "roles" => role::all()
-        ]);
+        return view('halaman/admin/form_tambah_mitra');
     }
 
     public function store(Request $request)
     {
+        // return request()->all();
         $datavalid = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email:dns|unique:users',
-            'password' => 'required',
-            'role_id' => 'required'
+            'password' => 'required'
         ]);
 
         $datavalid['password'] = bcrypt($datavalid['password']);
+        // $datavalid['role'] = 
 
-        // return request()->all();
         User::create($datavalid);
         $request->session()->flash('success', 'Data Berhasil Ditambahkan!');
-        return redirect('/pengaturan_akun');
+        return redirect('/tabel_mitra');
     }
 }

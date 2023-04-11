@@ -23,7 +23,13 @@ class HalamanController extends Controller
     }
 
     function tabel_pengguna(){
-        return view("halaman/admin/tabel_pengguna");
+        $data = DB::table('Users')
+            ->join('roles','roles.id','=','Users.role_id')
+            ->join('transaksis','transaksis.user_id','=','Users.id')
+            ->select('Users.name as name','Users.email as email', 'transaksis.saldo_akhir as saldo','roles.role as role')
+            ->where('Users.id','=',3)
+            ->get();
+        return view("halaman/admin/tabel_pengguna")->with('data', $data);
     }
     
     function isi_uang_elektronik(){
@@ -50,5 +56,7 @@ class HalamanController extends Controller
     function tabel_mitra(){
         return view("halaman/admin/tabel_mitra");
     }
-    
+    function tabel_hotel(){
+        return view("halaman/admin/tabel_hotel");
+    }
 }

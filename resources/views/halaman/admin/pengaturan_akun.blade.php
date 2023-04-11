@@ -25,7 +25,7 @@
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->role }}</td>
                 <td>
-                    <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                 </td>
                 <td>
                     <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>   

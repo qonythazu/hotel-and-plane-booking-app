@@ -24,10 +24,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin'])->middleware('auth');
 Route::get('/pengaturan_akun', [HalamanController::class, 'akun'])->middleware('auth');
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
-Route::get('/form_tambah_pengguna', [addUserController::class, 'index'])->middleware('auth');
-Route::post('/form_tambah_pengguna', [addUserController::class, 'store']);
+Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
+Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
+Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
 
 // PUNYA PENGGUNA //
 Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
@@ -44,9 +45,5 @@ Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk'])->middl
 Route::get('/dashboard', [HalamanController::class, 'dashboard'])->middleware('auth');
 Route::get('/', [SessionController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sesi/login', [SessionController::class, 'login']);
+
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
-
-
-
-
-
