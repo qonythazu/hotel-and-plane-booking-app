@@ -10,9 +10,6 @@ class UserController extends Controller
 {
     //
     public function index(){
-        // return response()->json([
-        //     'data' => $users
-        // ]);
         return view('halaman/admin/form_tambah_pengguna',[
             "roles" => role::all()
         ]);
@@ -30,11 +27,11 @@ class UserController extends Controller
         $datavalid['password'] = bcrypt($datavalid['password']);
 
         $users = User::create($datavalid);
-
-        return response()->json([
-            'message' => 'User created successfully',
-            'user' => $users
-        ], 201);
+        // return response()->json([
+        //     'message' => 'User created successfully',
+        //     'user' => $users
+        // ], 201);
+        return redirect('/pengaturan_akun')->with('success', 'akun berhasil ditambahkan!');
     }
 
     public function show($id)
@@ -75,11 +72,13 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy(User $users, $id){
+    public function destroy(User $users,$id){
         $users=User::find($id);
         $users->delete();
+        // Users::destroy($users->$id);
+        // return redirect('/pengaturan_akun')->with('deleted', 'akun berhasil dihapus!');
         return response()->json([
             'message' => 'user deleted'
         ]);
-    }   
+    }
 }

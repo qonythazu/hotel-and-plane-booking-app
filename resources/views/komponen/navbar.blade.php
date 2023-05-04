@@ -6,7 +6,7 @@
             @auth
                 @if(Auth::user()->role_id==1)
                 <a href="/dashboard_admin" class="btn btn-outline-light">Admin</a>
-                @elseif(Auth::user()->role_id==2)
+                @elseif(Auth::user()->role_id==3)
                 <button class="btn btn-outline-light">{{Auth::user()->name}} | User</button>
                 @else
                 <button class="btn btn-outline-light">{{Auth::user()->name}} | Mitra</button>

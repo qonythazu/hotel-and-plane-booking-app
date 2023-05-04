@@ -13,34 +13,13 @@
         <div class="booking-hotel">
             <div class="bgback p-3 pb-3 m-3 rounded-2">
                 <div class="bookingHotelMenu d-flex justify-content-evenly">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Nama Hotel
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Hotel Grand Sawit</a></li>
-                            <li><a class="dropdown-item" href="#">Hotel Grand Victoria</a></li>
-                        </ul>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            Jumlah Kamar
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">1</a></li>
-                            <li><a class="dropdown-item" href="#">2</a></li>
-                            <li><a class="dropdown-item" href="#">3</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <input type="date" class="form-control" id="tanggalbooking">
-                    </div>
+
                 </div>
-                <div class="text-center pt-5">
+                {{-- <div class="text-center pt-5">
                     <button type="submit" class="btn btn-outline-light">Booking</button>
-                </div>
+                </div> --}}
             </div>
-            
+
         </div>
-    </div>  
+    </div>
 @endsection
