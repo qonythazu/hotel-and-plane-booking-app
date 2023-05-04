@@ -49,7 +49,7 @@
         <a href="/pengaturan_akun" class="btn btn-outline-light ms-1"><i class="fas fa-users-cog"></i> Pengaturan Akun</a>
         <a href="/isi_uang_elektronik" class="btn btn-outline-light ms-1">Isi Uang Elektronik</a>
         <a href="/tarik_uang_elektronik" class="btn btn-outline-light ms-1">Tarik Uang Elektronik</a>
-        <a href="" class="btn btn-outline-light ms-1"><i class="fas fa-users-cog"></i> Pengaturan Hotel & Pesawat</a>
+        
     </div>
 @endsection
     

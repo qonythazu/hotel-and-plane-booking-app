@@ -31,6 +31,9 @@ class HalamanController extends Controller
             ->get();
         return view("halaman/admin/tabel_pengguna")->with('data', $data);
     }
+    function pengaturan(){
+        return view("halaman/admin/pengaturan_hotelpesawat");
+    }
     function isi_uang_elektronik(){
         return view("halaman/admin/isi_uang_elektronik");
     }
@@ -57,5 +60,8 @@ class HalamanController extends Controller
     }
     function tabel_hotel(){
         return view("halaman/admin/tabel_hotel");
+    }
+    function tabel_pesawat(){
+        return view("halaman/admin/tabel_pesawat");
     }
 }

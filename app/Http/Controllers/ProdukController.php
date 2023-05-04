@@ -11,11 +11,7 @@ class ProdukController extends Controller
     //
     public function index(){
 
-        $products = produk::paginate(10);
-        return response()->json([
-            'data' => $products
-        ]);
-        return view('halaman/tambah_produk');
+        return view('halaman/admin/form_tambah_hotelpesawat');
 
     }
 
