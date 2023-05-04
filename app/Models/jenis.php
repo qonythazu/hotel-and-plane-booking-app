@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class detail_produk extends Model
+class jenis extends Model
 {
     use HasFactory;
-    
-    protected $guarded = ['id'];
 
+    protected $guarded =['id'];
+    
     public function produk(){
-        return $this->belongsTo(produk::class);
+        return $this->hasMany(produk::class);
     }
 }

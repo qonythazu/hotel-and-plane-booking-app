@@ -34,7 +34,7 @@
                 <th scope="row">{{ $d+1 }}</th>
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
-                <td>{{ $item->role }}</td>
+                <td>{{ $item->role->role }}</td>
                 <td>
                     <form action="/hapus_pengguna" method="post"></form>
                     {{-- @method('delete') --}}

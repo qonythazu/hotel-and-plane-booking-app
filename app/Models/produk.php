@@ -11,19 +11,24 @@ class produk extends Model
 
     protected $guarded = ['id'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
-    }
-
-    public function detail_booking(){
-        return $this->hasMany(detail_booking::class);
-    }
-
-    public function detail_produk(){
-        return $this->hasMany(detail_produk::class);
+    public function booking(){
+        return $this->hasMany(booking::class);
     }
 
     public function jadwal(){
         return $this->hasMany(jadwal::class);
     }
+
+    public function kamar(){
+        return $this->hasMany(kamar::class);
+    }
+
+    public function jenis(){
+        return $this->belongsTo(jenis::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
 }

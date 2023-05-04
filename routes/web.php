@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\SessionController;
 
+use App\Models\produk;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,8 +33,11 @@ Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middlewar
 Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
 
 // PUNYA PENGGUNA //
-Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
-Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
+Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
+Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
+Route::get('/pesawat_search', [HalamanController::class, 'pesawat'])->middleware('auth');
+Route::get('/hotel_search', [HalamanController::class, 'hotel'])->middleware('auth');
+Route::get('/booking_hotel/{produk:id}', [HalamanController::class, 'booking'])->middleware('auth')->name('booking.detail');
 
 // PUNYA MITRA //
 Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra'])->middleware('auth');

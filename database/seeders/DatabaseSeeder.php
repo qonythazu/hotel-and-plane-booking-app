@@ -7,9 +7,10 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\transaksi;
 use App\Models\produk;
-use App\Models\detail_produk;
 use App\Models\jadwal;
 use App\Models\role;
+use App\Models\jenis;
+use App\Models\kamar;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,7 +30,7 @@ class DatabaseSeeder extends Seeder
 
 
         // --data testing-- //
-        
+
         // MEMBUAT USER
         role::create([
             'role'=> 'admin'
@@ -40,7 +41,7 @@ class DatabaseSeeder extends Seeder
         role::create([
             'role'=> 'pengguna'
         ]);
-        
+
         // MEMBUAT USER
 
         User::create([
@@ -77,7 +78,7 @@ class DatabaseSeeder extends Seeder
             'password'=> bcrypt('putri05'),
             'role_id'=> 3
         ]);
-        
+
         // MEMBUAT EWALLET
 
         transaksi::create([
@@ -120,120 +121,173 @@ class DatabaseSeeder extends Seeder
 
         ]);
 
+        // MEMBUAT JENIS PRODUK
+        jenis::create([
+            'jenis' => 'pesawat',
+        ]);
+
+        jenis::create([
+            'jenis' => 'hotel',
+        ]);
+
         // MEMBUAT PRODUK
-        
+
         produk::create([
-            'user_id'=> 2,
+            'nama_produk'=> 'Citilink',
+            'deskripsi'=> 'Ekonomi',
+            'user_id' => 2,
+            'jenis_id' => 1,
+            'jumlah'=> 20
+        ]);
+
+        produk::create([
+            'nama_produk'=> 'Citilink',
+            'deskripsi'=> 'Bisnis',
+            'user_id' => 2,
+            'jenis_id' => 1,
+            'jumlah'=> 20
+        ]);
+
+        produk::create([
             'nama_produk'=> 'Lion Air',
-            'produk' => 'pesawat',
-            'deskripsi'=> 'BPN-SMD'
-        ]);
-        
-        produk::create([
-            'user_id'=> 2,
-            'nama_produk'=> 'Borneo Air',
-            'produk' => 'pesawat',
-            'deskripsi'=> 'PPU-BJM'
+            'deskripsi'=> 'Ekonomi',
+            'user_id' => 3,
+            'jenis_id' => 1,
+            'jumlah'=> 20
         ]);
 
         produk::create([
-            'user_id'=> 3,
+            'nama_produk'=> 'Lion Air',
+            'deskripsi'=> 'Bisnis',
+            'user_id' => 3,
+            'jenis_id' => 1,
+            'jumlah'=> 20
+        ]);
+
+        produk::create([
             'nama_produk'=> 'Aston',
-            'produk' => 'hotel',
-            'deskripsi'=> 'Bontang'
+            'deskripsi'=> 'Balikpapan',
+            'user_id' => 2,
+            'jenis_id' => 2,
+            'jumlah'=> 3
         ]);
 
         produk::create([
-            'user_id'=> 3,
+            'nama_produk'=> 'Borneo Bay',
+            'deskripsi'=> 'Samarinda',
+            'user_id' => 2,
+            'jenis_id' => 2,
+            'jumlah'=> 3
+        ]);
+
+        produk::create([
+            'nama_produk'=> 'Aston',
+            'deskripsi'=> 'Bontang',
+            'user_id' => 2,
+            'jenis_id' => 2,
+            'jumlah'=> 3
+        ]);
+
+        produk::create([
             'nama_produk'=> 'Pasifica',
-            'produk' => 'hotel',
-            'deskripsi'=> 'Balikpapan'
+            'deskripsi'=> 'Balikpapan',
+            'user_id' => 3,
+            'jenis_id' => 2,
+            'jumlah'=> 5
         ]);
-        
-        // MEMBUAT DETAILPRODUK
 
-        detail_produk::create([
+        produk::create([
+            'nama_produk'=> 'Pasifica',
+            'deskripsi'=> 'Sangatta',
+            'user_id' => 3,
+            'jenis_id' => 2,
+            'jumlah'=> 5
+        ]);
+
+        produk::create([
+            'nama_produk'=> 'Novotel',
+            'deskripsi'=> 'Samarinda',
+            'user_id' => 3,
+            'jenis_id' => 2,
+            'jumlah'=> 5
+        ]);
+
+        // MEMBUAT JADWAL PESAWAT
+
+        jadwal::create([
             'produk_id'=> 1,
-            'nomor'=> 1,
-            'harga'=> 3500000
+            'kota_asal' => 'Balikpapan',
+            'kota_tiba' => 'Banjarmasin',
+            'tgl_pergi' => '2023-05-12',
+            'tgl_tiba' => '2023-05-12',
+            'waktu_pergi' => '10:10:00',
+            'waktu_tiba' => '13:30:00',
+            'harga' => 500000
         ]);
 
-        detail_produk::create([
-            'produk_id'=> 1,
-            'nomor'=> 2,
-            'harga'=> 3500000
-        ]);
-
-        detail_produk::create([
-            'produk_id'=> 1,
-            'nomor'=> 3,
-            'harga'=> 3500000
-        ]);
-        
-        detail_produk::create([
+        jadwal::create([
             'produk_id'=> 2,
-            'nomor'=> 1,
-            'harga'=> 1600000
+            'kota_asal' => 'Samarinda',
+            'kota_tiba' => 'Balikpapan',
+            'tgl_pergi' => '2023-05-20',
+            'tgl_tiba' => '2023-05-20',
+            'waktu_pergi' => '12:00:00',
+            'waktu_tiba' => '15:25:00',
+            'harga' => 800000
         ]);
 
-        detail_produk::create([
-            'produk_id'=> 2,
-            'nomor'=> 2,
-            'harga'=> 1600000
-        ]);
-
-        detail_produk::create([
-            'produk_id'=> 2,
-            'nomor'=> 3,
-            'harga'=> 1600000
-        ]);
-
-        detail_produk::create([
+        jadwal::create([
             'produk_id'=> 3,
-            'nomor'=> 10,
-            'harga'=> 500000
+            'kota_asal' => 'Banjarmasin',
+            'kota_tiba' => 'Balikpapan',
+            'tgl_pergi' => '2023-05-12',
+            'tgl_tiba' => '2023-05-12',
+            'waktu_pergi' => '08:30:00',
+            'waktu_tiba' => '12:00:00',
+            'harga' => 400000
         ]);
 
-        detail_produk::create([
-            'produk_id'=> 3,
-            'nomor'=> 11,
-            'harga'=> 500000
-        ]);
-
-        detail_produk::create([
+        jadwal::create([
             'produk_id'=> 4,
-            'nomor'=> 12,
-            'harga'=> 780000
+            'kota_asal' => 'Banjarmasin',
+            'kota_tiba' => 'Samarinda',
+            'tgl_pergi' => '2023-05-20',
+            'tgl_tiba' => '2023-05-20',
+            'waktu_pergi' => '18:44:00',
+            'waktu_tiba' => '22:25:00',
+            'harga' => 1200000
         ]);
 
-        detail_produk::create([
-            'produk_id'=> 4,
-            'nomor'=> 13,
-            'harga'=> 780000
+        // MEMBUAT JADWAL PESAWAT
+
+        kamar::create([
+            'produk_id' => 5,
+            'harga' => 200000
         ]);
 
-        // MEMBUAT JADWAL PRODUK
-        
-        jadwal::create([
-            'produk_id'=> 1,
-            'waktu'=> '2023-03-20 07:30:00'
+        kamar::create([
+            'produk_id' => 6,
+            'harga' => 300000
         ]);
 
-        jadwal::create([
-            'produk_id'=> 2,
-            'waktu'=> '2023-05-12 10:10:00'
+        kamar::create([
+            'produk_id' => 7,
+            'harga' => 150000
         ]);
 
-        jadwal::create([
-            'produk_id'=> 3,
-            'waktu'=> '2023-02-14 13:00:00'
+        kamar::create([
+            'produk_id' => 8,
+            'harga' => 95000
         ]);
 
-        jadwal::create([
-            'produk_id'=> 2,
-            'waktu'=> '2023-02-14 13:00:00'
+        kamar::create([
+            'produk_id' => 9,
+            'harga' => 550000
         ]);
 
-
+        kamar::create([
+            'produk_id' => 10,
+            'harga' => 25000
+        ]);
     }
 }
