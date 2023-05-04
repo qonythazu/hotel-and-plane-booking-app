@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\role;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -10,11 +11,13 @@ class UserController extends Controller
     //
     public function index(){
 
-        $users = User::all();
-        return response()->json([
-            'data' => $users
+        // $users = User::all();
+        // return response()->json([
+        //     'data' => $users
+        // ]);
+        return view('halaman/admin/form_tambah_pengguna',[
+            "roles" => role::all()
         ]);
-        // return view('halaman/admin/tabel_pengguna')->with('data', $data);
     }
 
     public function store(Request $request)
