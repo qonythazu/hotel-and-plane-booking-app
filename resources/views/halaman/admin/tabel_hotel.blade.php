@@ -16,9 +16,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama Hotel</th>
-                <th scope="col">Kota</th>
-                <th scope="col">Kamar Tersedia</th>
-                <th scope="col">Tanggal Tersedia</th>
+                <th scope="col">Deskripsi</th>
                 <th scope="col">Harga kamar</th>
             </tr>
             </thead>
@@ -27,14 +25,13 @@
                 <th scope="row">1</th>
                 <td>Grand Citra</td>
                 <td>Balikpapan</td>
-                <td>12</td>
-                <td>10-04-2023</td>
                 <td>250000</td>
-                    {{-- <span>
+                {{-- <td>
+                    <span>
                         <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                         <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span> --}}
-                </td>
+                    </span>
+                </td> --}}
             </tr>
             </tbody>
         </table>
