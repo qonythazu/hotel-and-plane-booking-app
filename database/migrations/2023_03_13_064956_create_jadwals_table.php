@@ -15,8 +15,14 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('produk_id');
-            $table->dateTime('waktu');
+            $table->foreignId('produk_id')->constrained();
+            $table->string('kota_asal');
+            $table->string('kota_tiba');
+            $table->date('tgl_pergi');
+            $table->date('tgl_tiba');
+            $table->time('waktu_pergi');
+            $table->time('waktu_tiba');
+            $table->integer('harga');
             $table->timestamps();
         });
     }

@@ -10,61 +10,11 @@
         @endforeach
     </div>
     <div class="column">
-        <div class="d-flex justify-content-start">
-            <a href="/booking_hotel" class="btn ms-3">Hotel</a>
-            <a href="#" class="btn btn-light ms-2 disabled " aria-disabled="true">Pesawat</a>
-        </div>
         <div class="booking-pesawat">
-            <form action="" class="form-inline">
             <div class="bgback p-3 pb-3 m-3 rounded-2 d-flex">
-                <div class="column col-md-4 px-3">
-                    <div>
-                        <input type="date" class="form-control" id="tanggalbooking">
-                    </div>
-                </div>
-
-                <div class="column col-md-3 px-3 d-flex justify-content-center">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-end" style="width: 300px; border:none; color:black;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Kota Asal
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            @foreach ($produk->unique('kota_asal') as $p)
-                            <li><a class="dropdown-item" href="#">{{ $p->kota_asal }}</a></li>
-                            @endforeach
-                        </ul>
-                        </div>
-                </div>
-                <div class="column col-md-3 px-3 d-flex justify-content-center">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-end" style="width: 300px; border:none; color:black;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Kota Tujuan
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            @foreach ($produk->unique('kota_tiba') as $p)
-                            <li><a class="dropdown-item" href="#">{{ $p->kota_tiba }}</a></li>
-                            @endforeach
-                        </ul>
-                        </div>
-                </div>
-                <div class="column col-md-2 px-3 d-flex justify-content-center">
-                    <a href="/pesawat_search" class="btn btn-outline-secondary" style="width: 200px; border:none; color:black;" type="button" id="button-addon2">Cari Penerbangan <i class="fas fa-search"></i></a>
-                </div>
+                <h4 style="color:white;">Hasil Pencarian</h4>
             </div>
-            </form>
-            <footer class="bg-light mt-5 py-5 fixed-bottom">
-                <div class="container d-flex flex-row">
-                  <div class="col-md-6">
-                    <h2 style="color: #e78bbb;">Partner Pesawat</h2>
-                    <p class="mb-0">Kami bekerja sama dengan berbagai maskapai di Indonesia</p>
-                    <p class="mt-0 mb-0">untuk menerbangkan anda ke mana pun Anda inginkan!</p>
-                  </div>
-                  <div class="col-md-6">
-
-                  </div>
-                </div>
-              </footer>
-                {{-- <div class="bgback p-3 pb-3 m-3 rounded-2 text-white d-flex justify-content-center">
+                <div class="bgback p-3 pb-3 m-3 rounded-2 text-white d-flex justify-content-center">
                 <table class="table bg-light table-custom text-center" style="width: 75%;">
                     <thead>
                         <tr>
@@ -80,8 +30,8 @@
                     <tbody>
                         @foreach ($produk as $p)
                         @php
-                            $berangkat = \Carbon\Carbon::parse($p->berangkat);
-                            $tiba = \Carbon\Carbon::parse($p->tiba);
+                            $berangkat = \Carbon\Carbon::parse($p->waktu_pergi);
+                            $tiba = \Carbon\Carbon::parse($p->waktu_tiba);
                             $durasi = $berangkat->diffInMinutes($tiba);
                             $jam = intdiv($durasi, 60);
                             $menit = $durasi % 60;
@@ -92,14 +42,14 @@
                         </td>
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
                             <div class="d-flex flex-column align-items-center">
-                                <span class="text-start fw-bold">{{ $p->produk }}</span>
-                                <small class="fst-italic text-muted">{{ $p->desk }}</small>
+                                <span class="text-start fw-bold">{{ $p->produk->nama_produk }}</span>
+                                <small class="fst-italic text-muted">{{ $p->produk->deskripsi }}</small>
                             </div>
                         </td>
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
                             <div class="d-flex flex-column align-items-center">
                                 <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($p->berangkat)->format('H:i') }}</span>
-                                <small>{{ $p->asal }}</small>
+                                <small>{{ $p->kota_asal }}</small>
                             </div>
                         </td>
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
@@ -111,7 +61,7 @@
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
                             <div class="d-flex flex-column align-items-center">
                                 <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($p->tiba)->format('H:i')}}</span>
-                                <small>{{ $p->tujuan }}</small>
+                                <small>{{ $p->kota_tiba }}</small>
                             </div>
                         </td>
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
@@ -126,7 +76,20 @@
                         @endforeach
                     </tbody>
                     </table>
-            </div> --}}
+                {{-- @foreach ($produk as $p)
+                <div class="card text-end text-dark mb-3" style="width: 100%;">
+                    <div class="card-body">
+                      <h5 class="card-title text-start">{{ $p->produk }}</h5>
+                      <p class="card-text text-start">{{ $p->desk }}</p>
+                      <p class="card-text text-start">{{ $p->asal }} | {{ $p->berangkat }} -> {{ $p->tujuan }} | {{ $p->tiba }}</p>
+                      <p class="card-text">Rp.{{ $p->harga }}</p>
+                      <div class="but plane btn-group">
+                          <a href="#" class="btn3 btn btn-sm">Booking</a>
+                      </div>
+                    </div>
+                </div>
+                @endforeach --}}
+            </div>
 
         </div>
     </div>

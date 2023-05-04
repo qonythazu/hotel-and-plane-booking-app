@@ -10,6 +10,12 @@ a:link {
     text-decoration: none;
 }
 
+a:active {
+    background-color: #f1bcd7 !important;
+}
+
+
+
 .formlogin {
     box-sizing: border-box;
     width: 600px;
@@ -54,12 +60,12 @@ a:link {
 .but .btn3 {
     background-color: white;
     border: 1px solid #9fa6b2;
-    color: #9fa6b2;
+    color: #9fa6b2 !important;
 }
 
 .but .btn3:hover {
     background-color: #f1bcd7;
-    color: white;
+    color: white !important;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -127,6 +133,11 @@ a:link {
 
 .bgback {
     background-color: #e673ae;
+}
+
+.table-custom thead {
+    background-color: #e78bbb;
+    color: white;
 }
 
 .form-adduser .form-floating:focus-within {
