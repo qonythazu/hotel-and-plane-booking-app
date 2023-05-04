@@ -16,7 +16,7 @@
                 </div>
                 @enderror
             </div>
-            
+
             <div class="form-floating">
                 <input type="email" name="email" class="form-control @error('email')is-invalid @enderror" id="email" placeholder="name@example.com" required value="{{old('email')}}">
                 <label for="email">Email</label>
@@ -26,7 +26,7 @@
                 </div>
                 @enderror
             </div>
-            
+
             <div class="form-floating">
                 <input type="password" name="password" class="form-control  @error('password')is-invalid @enderror" id="password" placeholder="Password" required>
                 <label for="password">Password</label>
@@ -36,14 +36,18 @@
                 </div>
                 @enderror
             </div>
-            
+
             <div class="formselect">
                 <select class="form-select" aria-label="Default select example" name="role_id" required>
                     <option> </option>
                     @foreach ($roles as $role)
-                    @if($role['id']>1)
-                    <option value="{{ $role->id }}"> {{ $role->role }} </option>
-                    @endif
+                        @if($role['id']>1)
+                            @if (old('role_id') == $role->id)
+                                <option value="{{ $role->id }}" selected> {{ $role->role }} </option>
+                            @else
+                                <option value="{{ $role->id }}"> {{ $role->role }} </option>
+                            @endif
+                        @endif
                     @endforeach
                 </select>
             </div>

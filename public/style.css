@@ -159,7 +159,7 @@ a:link {
 }
 
 .dasboard .bg2 {
-    background: #FF6FB5;
+    background: #ff6fb5;
 }
 
 .dasboard .bg3 {
@@ -167,7 +167,7 @@ a:link {
 }
 
 .dasboard .bg4 {
-    background: #FF6FB5;
+    background: #ff6fb5;
 }
 
 .bgwa {
@@ -185,17 +185,33 @@ a:link {
 }
 
 .bd .btn:hover {
-    background-color: #FF6FB5;
+    background-color: #ff6fb5;
+}
+
+.btn.disabled,
+.btn:disabled,
+fieldset:disabled .btn {
+    color: white !important;
+    pointer-events: none !important;
+    background-color: #ff6fb5 !important;
+    border-color: #ff6fb5 !important;
 }
 
 .column .btn {
-    background-color: #e78bbb;
-    color: white;
+    /* background-color: #e78bbb;
+    color: white; */
+    background-color: white;
+    color: #f1bcd7;
 }
 
 .column .btn:hover {
     background-color: #f1bcd7;
     color: white;
+}
+
+.column .btn:active {
+    border-color: #ff6fb5 !important;
+    color: #ff6fb5 !important;
 }
 
 .column .btn1 {
