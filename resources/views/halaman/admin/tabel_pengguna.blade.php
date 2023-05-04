@@ -20,7 +20,8 @@
                         <th scope="row">{{ $d+1 }}</th>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
-                        <td>{{ $item->saldo }}</td>
+                        <td>Rp {{ number_format(($item->transaksi->saldo_akhir ? $item->transaksi->saldo_akhir : '0'),2,',','.') }}</td>
+
                         <td>
                             <span>
                                 <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>

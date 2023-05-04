@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('produk_id')->constrained();
             $table->date('tanggal');
             $table->integer('total_harga');
-            $table->enum('status_pembayaran',['belum bayar','lunas']);
+            $table->string('status');
             $table->timestamps();
         });
     }

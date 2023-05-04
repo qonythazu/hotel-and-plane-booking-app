@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->integer('saldo_awal')->nullable();
             $table->integer('debit')->nullable();
             $table->integer('kredit')->nullable();
