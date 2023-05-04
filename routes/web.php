@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\addUserController;
 use Illuminate\Support\Facades\Route;
@@ -23,12 +25,15 @@ use Illuminate\Support\Facades\Route;
 // PUNYA ADMIN //
 Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin'])->middleware('auth');
 Route::get('/pengaturan_akun', [HalamanController::class, 'akun'])->middleware('auth');
+Route::get('/pengaturan_hotelpesawat', [HalamanController::class, 'pengaturan'])->middleware('auth');
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
 Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
 Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
 Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
+Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat'])->middleware('auth');
+Route::get('/form_tambah_hotelpesawat', [ProdukController::class, 'index'])->middleware('auth');
 
 // PUNYA PENGGUNA //
 Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
