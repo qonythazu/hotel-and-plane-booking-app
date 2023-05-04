@@ -41,7 +41,10 @@ class HalamanController extends Controller
         return view("halaman/admin/tarik_uang_elektronik");
     }
     function halaman_mitra(){
-        return view("halaman/mitra/halaman_mitra");
+        $data = DB::table('produks')
+            ->select('produks.nama_produk as name','produks.produk as tipe', 'produks.deskripsi as deskripsi')
+            ->get();
+        return view("halaman/mitra/halaman_mitra")->with('data', $data);
     }
     function pengguna_book_hotel(){
         return view("halaman/pengguna/pengguna_book_hotel");
