@@ -19,14 +19,9 @@
             
             <div class="formselect">
                 <select class="form-select" aria-label="Default select example" name="produk_id" required>
-                    <option> </option>
+                    <option selected="" disabled="">Tipe</option>
                     <option>Hotel</option>
                     <option>Pesawat</option>
-                    {{-- @foreach ($produks as $produk)
-                    @if($produk['id']>1)
-                    <option value="{{ $role->id }}"> {{ $role->role }} </option>
-                    @endif
-                    @endforeach --}}
                 </select>
             </div>
 
@@ -38,7 +33,17 @@
                       {{ $message }}
                   </div>
                   @enderror
-              </div>
+            </div>
+
+            <div class="form-floating">
+              <input type="text" name="stok" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
+              <label for="name">Stok</label>
+                @error('name')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+                @enderror
+          </div>
 
             <button class="w-100 btn btn-outline-light mt-4" type="submit">Tambah</button>
             <a href="/pengaturan_hotelpesawat" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
