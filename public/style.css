@@ -217,3 +217,49 @@ fieldset:disabled .btn {
 .column .btn1 {
     background-color: #e78bbb;
 }
+
+.mitra {
+    background: #e673ae;
+}
+
+.mtr .btn-a {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.mtr .btn-a:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.mtr .btn-b{
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.mtr .btn-b:hover{
+    background-color: #e7cad9;
+    color: white;
+}
+
+.formproduk {
+    background: #e673ae;
+}
+
+.formproduk .btn-b {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.formproduk .btn-b:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+/* .tb .form {
+    background: white;
+    border-radius: 5px;
+    height: 95px;
+    padding-left: 12px;
+    padding-top: 5px;
+} */
