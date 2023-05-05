@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\role;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\role;
 
 class UserController extends Controller
 {
@@ -74,9 +75,9 @@ class UserController extends Controller
 
     public function destroy(User $users,$id){
         $users=User::find($id);
+
         $users->delete();
-        // Users::destroy($users->$id);
-        // return redirect('/pengaturan_akun')->with('deleted', 'akun berhasil dihapus!');
+
         return response()->json([
             'message' => 'user deleted'
         ]);

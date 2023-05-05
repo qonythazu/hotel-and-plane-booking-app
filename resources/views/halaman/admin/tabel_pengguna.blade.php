@@ -1,3 +1,4 @@
+
 @extends('layout/app')
 
 @section('content')
@@ -24,10 +25,47 @@
 
                         <td>
                             <span>
+                                <div class="user">
+                                    <button class="edit-button btn btn-success">Edit</button>
+                                </div>
+                                
+                                <!-- Form edit yang disembunyikan -->
+                                <form class="edit-form" style="display: none;">
+                                    @csrf
+                                    @method('PUT')
+                                    <label for="name">Name:</label>
+                                    <input type="text" name="name" value="{{ $item->name }}">
+                                    <label for="email">Email:</label>
+                                    <input type="email" name="email" value="{{ $item->email }}">
+                                    <button type="submit" class="btn btn-primary">Update User</button>
+                                </form>
+                                
+                                <script>
+                                    var editButton = document.querySelector('.edit-button');
+                                    var user = document.querySelector('.user');
+                                    var editForm = document.querySelector('.edit-form');
+                                
+                                    editButton.addEventListener('click', function() {
+                                        // Sembunyikan tampilan user yang sudah ada
+                                        user.style.display = 'none';
+                                
+                                        // Tampilkan form edit
+                                        editForm.style.display = 'block';
+                                    });
+                                </script>
+                                <form action="{{ route('users.destroy', $item->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                            </span>
+                        </td>
+                        {{-- <td>
+                            <span>
                                 <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                                 <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                             </span>
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>
