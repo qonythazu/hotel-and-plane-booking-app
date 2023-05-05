@@ -1,10 +1,14 @@
 <?php
 
-use App\Http\Controllers\HalamanController;
-use App\Http\Controllers\SessionController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\SessionController;
+
 use Illuminate\Support\Facades\Route;
 
+use App\Models\produk;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,15 +27,28 @@ use Illuminate\Support\Facades\Route;
 // PUNYA ADMIN //
 Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin'])->middleware('auth');
 Route::get('/pengaturan_akun', [HalamanController::class, 'akun'])->middleware('auth');
+Route::get('/pengaturan_hotelpesawat', [HalamanController::class, 'pengaturan'])->middleware('auth');
+
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
 Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
 Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
+// Route::post('/hapus_pengguna', [UserController::class, 'destroy']);
+Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+
+
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
+Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
+Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat'])->middleware('auth');
+Route::get('/form_tambah_hotelpesawat', [ProdukController::class, 'index'])->middleware('auth');
 
 // PUNYA PENGGUNA //
-Route::get('/pengguna_book_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
-Route::get('/pengguna_book_plane', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
+Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
+Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
+Route::get('/pesawat_search', [HalamanController::class, 'pesawat'])->middleware('auth');
+Route::get('/hotel_search', [HalamanController::class, 'hotel'])->middleware('auth');
+Route::get('/booking_hotel/{produk:id}', [HalamanController::class, 'booking'])->middleware('auth')->name('booking.detail');
 
 // PUNYA MITRA //
 Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra'])->middleware('auth');
@@ -44,4 +61,5 @@ Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk'])->middl
 Route::get('/dashboard', [HalamanController::class, 'dashboard'])->middleware('auth');
 Route::get('/', [SessionController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sesi/login', [SessionController::class, 'login']);
+
 Route::get('/sesi/logout', [SessionController::class, 'logout']);

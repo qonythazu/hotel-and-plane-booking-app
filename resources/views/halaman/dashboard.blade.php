@@ -9,7 +9,13 @@
         <h1 class="h1 fw-light"><strong>Booking App</strong></h1>
         <p class="lead text-muted">web ini menyediakan layanan pemesanan tiket pesawat dan hotel secara daring dengan fokus perjalanan domestik di Kalimantan Timur</p>
         <p>
-          <button type="submit" name="submit" class="btn2 btn btn-outline-light">Let's Get Started</button>
+            @if(Auth::user()->role_id==2)
+            <a href="/halaman_mitra" class="btn2 btn btn-outline-light">Let's Get Started</a>
+            {{-- <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button> --}}
+            @elseif(Auth::user()->role_id==3)
+            <a href="/booking_hotel" class="btn2 btn btn-outline-light">Let's Get Started</a>
+            {{-- <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button> --}}
+            @endif
         </p>
       </div>
     </div>
@@ -26,7 +32,13 @@
               <p class="card-text">Anda dapat dengan mudah memesan tiket pesawat melalui Booking App ini!. Tunggu apa lagi?</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="but btn-group">
-                  <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button>
+                  @if(Auth::user()->role_id==2)
+                  <a href="/halaman_mitra" class="btn3 btn btn-sm mt-4">List Produk</a>
+                  {{-- <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button> --}}
+                  @elseif(Auth::user()->role_id==3)
+                  <a href="/booking_pesawat" class="btn3 btn btn-sm mt-4">Booking Sekarang</a>
+                  {{-- <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button> --}}
+                  @endif
                 </div>
                 <small class="text-muted mt-4"><i class="fas fa-plane-departure"></i></small>
               </div>
@@ -41,7 +53,13 @@
               <p class="card-text">Tidak hanya tiket pesawat. dengan Booking App anda juga bisa memesan kamar hotel secara praktis dan mudah</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="but btn-group">
-                  <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button>
+                    @if(Auth::user()->role_id==2)
+                    <a href="/halaman_mitra" class="btn3 btn btn-sm mt-4">List Produk</a>
+                    {{-- <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button> --}}
+                    @elseif(Auth::user()->role_id==3)
+                    <a href="/booking_hotel" class="btn3 btn btn-sm mt-4">Booking Sekarang</a>
+                    {{-- <button type="button" class="btn3 btn btn-sm mt-4">Booking Sekarang</button> --}}
+                    @endif
                 </div>
                 <small class="text-muted mt-4"><i class="fas fa-suitcase"></i></small>
               </div>
@@ -54,11 +72,11 @@
 </main>
 
 <footer class="bg-light mt-5 py-3">
-  <div class="row container">
-    <div class="col-12 col-md-6">
+  <div class="container d-flex flex-row">
+    <div class="col-md-6">
       <small class="d-block mb-3 text-muted">&copy; 2023</small>
     </div>
-    <div class="col-6 col-md">
+    <div class="col-md-2">
       <h5>Company</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="https://itk.ac.id/">Insitut Teknologi kalimantan</a></li>
@@ -66,7 +84,7 @@
         <li><p class="text-secondary">Pengembangan Aplikasi Berbasis Web</p></li>
       </ul>
     </div>
-    <div class="col-6 col-md">
+    <div class="col-md-2">
       <h5>Product By</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="https://laravel.com/">Laravel 10</a></li>
@@ -74,7 +92,7 @@
         <li><a class="link-secondary" href="https://www.mysql.com/">MySQL</a></li>
       </ul>
     </div>
-    <div class="col-6 col-md">
+    <div class="col-md-2">
       <h5>Contacts</h5>
       <ul class="list-unstyled text-small">
         <li><a class="link-secondary" href="#">Destiera Fitryani</a></li>

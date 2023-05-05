@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\transaksi;
+use App\Models\produk;
+use App\Models\role;
+use App\Models\jadwal;
+use App\Models\kamar;
+
 
 use DB;
 
@@ -13,28 +18,29 @@ class HalamanController extends Controller
     function dashboard_admin(){
         return view("halaman/admin/dashboard_admin");
     }
-    
+
     function akun(){
-        $data = DB::table('Users')
-            ->join('roles','roles.id','=','Users.role_id')
-            ->select('Users.name as name','Users.email as email','roles.role as role')
-            ->get();
+        $data = User::with('role')->get();
+
         return view("halaman/admin/pengaturan_akun")->with('data', $data);
     }
 
     function tabel_pengguna(){
-        $data = DB::table('Users')
-            ->join('roles','roles.id','=','Users.role_id')
-            ->join('transaksis','transaksis.user_id','=','Users.id')
-            ->select('Users.name as name','Users.email as email', 'transaksis.saldo_akhir as saldo','roles.role as role')
-            ->where('Users.id','=',3)
+        $data = User::with('role','transaksi')
+            ->where('Users.role_id','=',3)
             ->get();
+
         return view("halaman/admin/tabel_pengguna")->with('data', $data);
     }
     
     // function tambah_pengguna(){
     //     return view("halaman/admin/form_tambah_pengguna");
     // }
+
+
+    function pengaturan(){
+        return view("halaman/admin/pengaturan_hotelpesawat");
+    }
 
     function isi_uang_elektronik(){
         return view("halaman/admin/isi_uang_elektronik");
@@ -43,14 +49,65 @@ class HalamanController extends Controller
         return view("halaman/admin/tarik_uang_elektronik");
     }
     function halaman_mitra(){
-        return view("halaman/mitra/halaman_mitra");
+        $data = DB::table('produks')
+            ->select('produks.nama_produk as name','produks.produk as tipe', 'produks.deskripsi as deskripsi')
+            ->get();
+        return view("halaman/mitra/halaman_mitra")->with('data', $data);
     }
     function pengguna_book_hotel(){
-        return view("halaman/pengguna/pengguna_book_hotel");
+        $data = User::with('transaksi')->get();
+
+        $produk = produk::with('jenis')
+        ->where('produks.jenis_id','=', 2)
+        ->get();
+
+        return view("halaman/pengguna/pengguna_book_hotel",[
+            'data' => $data,
+            'produk' => $produk
+        ]);
     }
     function pengguna_book_plane(){
-        return view("halaman/pengguna/pengguna_book_plane");
+        $data = User::with('transaksi')->get();
+
+        $produk = jadwal::with('produk')->get();
+
+        return view("halaman/pengguna/pengguna_book_plane",[
+            'data' => $data,
+            'produk' => $produk
+        ]);
     }
+    function pesawat(){
+        $data = User::with('transaksi')->get();
+        $produk = jadwal::with('produk')->get();
+
+        return view("halaman/pengguna/pesawat",[
+            'data' => $data,
+            'produk' => $produk
+        ]);
+    }
+    function hotel(){
+        $data = user::with('transaksi')->get();
+
+        $produk = produk::with('jenis')
+        ->where('produks.jenis_id','=', 2)
+        ->get();
+
+        return view("halaman/pengguna/hotel",[
+            'data' => $data,
+            'produk' => $produk
+        ]);
+    }
+
+    function booking($produk){
+        $data = kamar::with('produk')
+            ->where('kamars.produk_id','=',$produk)
+            ->get();
+
+        return view("halaman/pengguna/booking",[
+            'data' => $data,
+        ]);
+    }
+
     function tambah_produk(){
         return view("halaman/tambah_produk");
     }
@@ -60,5 +117,10 @@ class HalamanController extends Controller
     function tabel_mitra(){
         return view("halaman/admin/tabel_mitra");
     }
-    
+    function tabel_hotel(){
+        return view("halaman/admin/tabel_hotel");
+    }
+    function tabel_pesawat(){
+        return view("halaman/admin/tabel_pesawat");
+    }
 }

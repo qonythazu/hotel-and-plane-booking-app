@@ -3,90 +3,131 @@
 @section('content')
     <div class="saldo-anda bgback m-3 p-3 text-white rounded-2 text-center">
         <h4>Saldo Anda</h4>
-        <h2>Rp1.000.000,00</h2>
+        @foreach ($data as $d)
+        @if ($d->id == Auth::user()->id)
+        <h2> Rp. {{number_format($d->transaksi->saldo_akhir,2,',','.')}}</h2>
+        @endif
+        @endforeach
     </div>
     <div class="column">
         <div class="d-flex justify-content-start">
-            <a href="/pengguna_book_hotel" class="btn ms-3">Hotel</a>
+            <a href="/booking_hotel" class="btn ms-3">Hotel</a>
             <a href="#" class="btn btn-light ms-2 disabled " aria-disabled="true">Pesawat</a>
         </div>
         <div class="booking-pesawat">
-            <div class="bgback p-3 pb-3 m-3 rounded-2">
-                <div>
-                    <input type="date" class="form-control" id="tanggalbooking">
+            <form action="" class="form-inline">
+            <div class="bgback p-3 pb-3 m-3 rounded-2 d-flex">
+                <div class="column col-md-4 px-3">
+                    <div>
+                        <input type="date" class="form-control" id="tanggalbooking">
+                    </div>
                 </div>
-                <div class="text-center pt-5">
-                    <button type="submit" class="btn btn-outline-light">Cari Tiket <i class="fa-solid fa-magnifying-glass"></i></button>
+
+                <div class="column col-md-3 px-3 d-flex justify-content-center">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-end" style="width: 300px; border:none; color:black;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Kota Asal
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            @foreach ($produk->unique('kota_asal') as $p)
+                            <li><a class="dropdown-item" href="#">{{ $p->kota_asal }}</a></li>
+                            @endforeach
+                        </ul>
+                        </div>
                 </div>
-            </div>
-            <div class="bgback p-3 pb-3 m-3 rounded-2 text-white">
-                <h5>Hasil Pencarian</h5>
-                <div class="column">
-                    <div class="bg-light text-dark p-3 mb-2 rounded-2">
-                        <h5>Pesawat Lion</h5>
-                        <div class="d-flex">
-                            <div class="bgwa text-white p-2 rounded-1 me-2">
-                                <p>Berangkat pukul 12.00</p>
-                            </div>
-                            <div class="btn-group ">
-                                <button type="button" class="btn btn-wa dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Jumlah Penumpang
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">1</a></li>
-                                    <li><a class="dropdown-item" href="#">2</a></li>
-                                    <li><a class="dropdown-item" href="#">3</a></li>
-                                </ul>
-                            </div>
+                <div class="column col-md-3 px-3 d-flex justify-content-center">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-end" style="width: 300px; border:none; color:black;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Kota Tujuan
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            @foreach ($produk->unique('kota_tiba') as $p)
+                            <li><a class="dropdown-item" href="#">{{ $p->kota_tiba }}</a></li>
+                            @endforeach
+                        </ul>
                         </div>
-                        <div class="pt-5 bd">
-                            <button type="submit" class="btn btn-outline-secondary">Booking</i></button>
-                        </div>
-                    </div>
-                    <div class="bg-light text-dark p-3 mb-2 rounded-2">
-                        <h5>Pesawat Lion</h5>
-                        <div class="d-flex">
-                            <div class="bgwa text-white p-2 rounded-1 me-2">
-                                <p>Berangkat pukul 15.00</p>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-wa dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Jumlah Penumpang
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">1</a></li>
-                                    <li><a class="dropdown-item" href="#">2</a></li>
-                                    <li><a class="dropdown-item" href="#">3</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-5 bd">
-                            <button type="submit" class="btn btn-outline-secondary">Booking</i></button>
-                        </div>
-                    </div>
-                    <div class="bg-light text-dark p-3 mb-2 rounded-2">
-                        <h5>Pesawat Lion</h5>
-                        <div class="d-flex">
-                            <div class="bgwa text-white p-2 rounded-1 me-2">
-                                <p>Berangkat pukul 21.00</p>
-                            </div>
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-wa dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Jumlah Penumpang
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">1</a></li>
-                                    <li><a class="dropdown-item" href="#">2</a></li>
-                                    <li><a class="dropdown-item" href="#">3</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-5 bd">
-                            <button type="submit" class="btn btn-outline-secondary">Booking</i></button>
-                        </div>
-                    </div>
+                </div>
+                <div class="column col-md-2 px-3 d-flex justify-content-center">
+                    <a href="/pesawat_search" class="btn btn-outline-secondary" style="width: 200px; border:none; color:black;" type="button" id="button-addon2">Cari Penerbangan <i class="fas fa-search"></i></a>
                 </div>
             </div>
+            </form>
+            <footer class="bg-light mt-5 py-5 fixed-bottom">
+                <div class="container d-flex flex-row">
+                  <div class="col-md-6">
+                    <h2 style="color: #e78bbb;">Partner Pesawat</h2>
+                    <p class="mb-0">Kami bekerja sama dengan berbagai maskapai di Indonesia</p>
+                    <p class="mt-0 mb-0">untuk menerbangkan anda ke mana pun Anda inginkan!</p>
+                  </div>
+                  <div class="col-md-6">
+
+                  </div>
+                </div>
+              </footer>
+                {{-- <div class="bgback p-3 pb-3 m-3 rounded-2 text-white d-flex justify-content-center">
+                <table class="table bg-light table-custom text-center" style="width: 75%;">
+                    <thead>
+                        <tr>
+                        <th scope="col" colspan="2">Maskapai</th>
+                        <th scope="col">Berangkat</th>
+                        <th scope="col"></th>
+                        <th scope="col">Tiba</th>
+
+                        <th scope="col">Harga Per Orang</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($produk as $p)
+                        @php
+                            $berangkat = \Carbon\Carbon::parse($p->berangkat);
+                            $tiba = \Carbon\Carbon::parse($p->tiba);
+                            $durasi = $berangkat->diffInMinutes($tiba);
+                            $jam = intdiv($durasi, 60);
+                            $menit = $durasi % 60;
+                        @endphp
+                        <tr>
+                        <td class="text-center" style="vertical-align: middle;padding: 25px">
+                            <p>foto</p>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle;padding: 25px">
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="text-start fw-bold">{{ $p->produk }}</span>
+                                <small class="fst-italic text-muted">{{ $p->desk }}</small>
+                            </div>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle;padding: 25px">
+                            <div class="d-flex flex-column align-items-center">
+                                <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($p->berangkat)->format('H:i') }}</span>
+                                <small>{{ $p->asal }}</small>
+                            </div>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle;padding: 25px">
+                            <div class="d-flex flex-column align-items-center">
+                                <span><i class="fas fa-plane"></i></span>
+                                <small class="text-muted" style="font-size: 8pt">{{ $jam }}j {{ $menit }}mnt</small>
+                            </div>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle;padding: 25px">
+                            <div class="d-flex flex-column align-items-center">
+                                <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($p->tiba)->format('H:i')}}</span>
+                                <small>{{ $p->tujuan }}</small>
+                            </div>
+                        </td>
+                        <td class="text-center" style="vertical-align: middle;padding: 25px">
+                            <div class="d-flex flex-column align-items-end">
+                                <span class="fw-bold fs-5 mb-2">Rp.{{ number_format($p->harga)}}/orng</span>
+                                <div class="but plane btn-group" style="width: 150px;">
+                                    <a href="#" class="btn3 btn btn-sm">Booking</a>
+                                </div>
+                            </div>
+                        </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                    </table>
+            </div> --}}
+
         </div>
-    </div>  
+    </div>
 @endsection

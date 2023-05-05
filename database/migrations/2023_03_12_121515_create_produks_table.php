@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
             $table->string('nama_produk');
-            $table->enum('produk',['pesawat','hotel']);
             $table->text('deskripsi');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('jenis_id')->constrained();
+            $table->integer('jumlah');
             $table->timestamps();
         });
     }
-  
+
     /**
      * Reverse the migrations.
      *

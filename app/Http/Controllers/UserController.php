@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\role;
@@ -10,11 +11,6 @@ class UserController extends Controller
 {
     //
     public function index(){
-
-        $users = User::all();
-        // return response()->json([
-        //     'data' => $users
-        // ]);
         return view('halaman/admin/form_tambah_pengguna',[
             "roles" => role::all()
         ]);
@@ -32,11 +28,11 @@ class UserController extends Controller
         $datavalid['password'] = bcrypt($datavalid['password']);
 
         $users = User::create($datavalid);
-
-        return response()->json([
-            'message' => 'User created successfully',
-            'user' => $users
-        ], 201);
+        // return response()->json([
+        //     'message' => 'User created successfully',
+        //     'user' => $users
+        // ], 201);
+        return redirect('/pengaturan_akun')->with('success', 'akun berhasil ditambahkan!');
     }
 
     public function show($id)
@@ -77,11 +73,13 @@ class UserController extends Controller
         ]);
     }
 
-    public function destroy(User $users, $id){
+    public function destroy(User $users,$id){
         $users=User::find($id);
+
         $users->delete();
+
         return response()->json([
             'message' => 'user deleted'
         ]);
-    }   
+    }
 }

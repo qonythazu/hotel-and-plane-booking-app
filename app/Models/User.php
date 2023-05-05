@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
 
     public function transaksi(){
-        return $this->belongsTo(transaksi::class);
+        return $this->hasOne(transaksi::class);
     }
 
     public function role(){

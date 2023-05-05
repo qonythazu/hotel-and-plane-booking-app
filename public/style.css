@@ -10,6 +10,12 @@ a:link {
     text-decoration: none;
 }
 
+a:active {
+    background-color: #f1bcd7 !important;
+}
+
+
+
 .formlogin {
     box-sizing: border-box;
     width: 600px;
@@ -54,12 +60,12 @@ a:link {
 .but .btn3 {
     background-color: white;
     border: 1px solid #9fa6b2;
-    color: #9fa6b2;
+    color: #9fa6b2 !important;
 }
 
 .but .btn3:hover {
     background-color: #f1bcd7;
-    color: white;
+    color: white !important;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -129,6 +135,11 @@ a:link {
     background-color: #e673ae;
 }
 
+.table-custom thead {
+    background-color: #e78bbb;
+    color: white;
+}
+
 .form-adduser .form-floating:focus-within {
     z-index: 2;
 }
@@ -159,7 +170,7 @@ a:link {
 }
 
 .dasboard .bg2 {
-    background: #FF6FB5;
+    background: #ff6fb5;
 }
 
 .dasboard .bg3 {
@@ -167,7 +178,7 @@ a:link {
 }
 
 .dasboard .bg4 {
-    background: #FF6FB5;
+    background: #ff6fb5;
 }
 
 .bgwa {
@@ -185,12 +196,23 @@ a:link {
 }
 
 .bd .btn:hover {
-    background-color: #FF6FB5;
+    background-color: #ff6fb5;
+}
+
+.btn.disabled,
+.btn:disabled,
+fieldset:disabled .btn {
+    color: white !important;
+    pointer-events: none !important;
+    background-color: #ff6fb5 !important;
+    border-color: #ff6fb5 !important;
 }
 
 .column .btn {
-    background-color: #e78bbb;
-    color: white;
+    /* background-color: #e78bbb;
+    color: white; */
+    background-color: white;
+    color: #f1bcd7;
 }
 
 .column .btn:hover {
@@ -198,6 +220,57 @@ a:link {
     color: white;
 }
 
+.column .btn:active {
+    border-color: #ff6fb5 !important;
+    color: #ff6fb5 !important;
+}
+
 .column .btn1 {
     background-color: #e78bbb;
 }
+
+.mitra {
+    background: #e673ae;
+}
+
+.mtr .btn-a {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.mtr .btn-a:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.mtr .btn-b{
+    background-color: #f1bcd7;
+    color: white;
+}
+
+.mtr .btn-b:hover{
+    background-color: #e7cad9;
+    color: white;
+}
+
+.formproduk {
+    background: #e673ae;
+}
+
+.formproduk .btn-b {
+    background-color: #e78bbb;
+    color: white;
+}
+
+.formproduk .btn-b:hover {
+    background-color: #f1bcd7;
+    color: white;
+}
+
+/* .tb .form {
+    background: white;
+    border-radius: 5px;
+    height: 95px;
+    padding-left: 12px;
+    padding-top: 5px;
+} */

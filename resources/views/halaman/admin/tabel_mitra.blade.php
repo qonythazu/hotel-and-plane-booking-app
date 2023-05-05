@@ -11,7 +11,6 @@
         @endif
 
         <h4 class="data-mitra">Data Mitra</h4>
-        <a href="/form_tambah_mitra" class="btn btn-a btn-outline-light my-2">Tambah</a>
         <table class="table table-bordered table-light">
             <thead>
             <tr>
