@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\SessionController;
-use App\Http\Controllers\addUserController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

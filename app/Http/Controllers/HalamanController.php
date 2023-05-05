@@ -32,6 +32,10 @@ class HalamanController extends Controller
         return view("halaman/admin/tabel_pengguna")->with('data', $data);
     }
     
+    // function tambah_pengguna(){
+    //     return view("halaman/admin/form_tambah_pengguna");
+    // }
+
     function isi_uang_elektronik(){
         return view("halaman/admin/isi_uang_elektronik");
     }
