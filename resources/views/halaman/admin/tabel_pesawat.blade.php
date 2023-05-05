@@ -17,23 +17,28 @@
                 <th scope="col">#</th>
                 <th scope="col">Nama Pesawat</th>
                 <th scope="col">Deskripsi</th>
-                <th scope="col">Harga</th>
+                <th scope="col">Stok Kursi</th>
+                <th scope="col">Action</th>
+
                 
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Lion Air</td>
-                <td>Balikpapan - Tarakan</td>
-                <td>800000</td>
-                {{-- <td>
-                    <span>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                        <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span>
-                </td> --}}
-            </tr>
+                @foreach ($data as $d => $item)
+                    <tr>
+                        <th scope="row">{{ $d+1 }}</th>
+                        <td>{{ $item->produk->nama_produk }} <i>( {{ $item->produk->deskripsi }} )</i></td>
+                        <td>{{ $item->kota_asal }} - {{ $item->kota_tiba }}</td>
+                        <td>{{ $item->produk->jumlah }}</td>
+
+                        <td>
+                            <span>
+                                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -17,22 +17,26 @@
                 <th scope="col" colspan="2" class="text-center">Action</th>
             </tr>
             </thead>
-            <tbody>
-            {{-- @foreach($data as $d => $item)
-            <tr>
-                <th scope="row">{{ $d+1 }}</th>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->email }}</td>
-                <td>{{ $item->role }}</td>
-                <td>
-                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>   
-                </td>
-            </tr>
-            @endforeach --}}
-            </tbody>
+            {{-- <tbody>
+                @foreach($data as $d => $item)
+                <tr>
+                    <th scope="row">{{ $d+1 }}</th>~
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->role->role }}</td>
+                    <td>
+                        <form action="/hapus_hotelpesawat" method="post"></form>
+                        @method('delete')
+                        @csrf
+                        <button class="btn btn-danger" onclick="return comfirm('yakin mau menghapus data? data yang dihapus tidak dapat dipulihkan kembali.')"><i class="fa-solid fa-trash"></i></button>
+                        <a href="/hapus_pengguna" class="btn btn-danger" onclick="return comfirm('yakin mau menghapus data? data yang dihapus tidak dapat dipulihkan kembali.')"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                    </td>
+                </tr>
+                @endforeach
+                </tbody> --}}
         </table>
         <a href="/dashboard_admin" class="btn btn-outline-light ms-1">kembali</a>
     </div>

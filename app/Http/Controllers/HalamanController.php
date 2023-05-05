@@ -115,12 +115,23 @@ class HalamanController extends Controller
         return view("halaman/dashboard");
     }
     function tabel_mitra(){
-        return view("halaman/admin/tabel_mitra");
+        $data = User::with('role','transaksi')
+            ->where('Users.role_id','=',2)
+            ->get();
+
+        return view("halaman/admin/tabel_mitra")->with('data', $data);
     }
     function tabel_hotel(){
-        return view("halaman/admin/tabel_hotel");
+       $data = produk::with('jenis')
+       ->where('produks.jenis_id', '=', 2)
+       ->get();
+       
+        return view("halaman/admin/tabel_hotel")->with('data', $data);
     }
     function tabel_pesawat(){
-        return view("halaman/admin/tabel_pesawat");
-    }
+        $data = jadwal::with('produk')
+        ->get();
+        
+         return view("halaman/admin/tabel_pesawat")->with('data', $data);
+     }
 }

@@ -22,6 +22,7 @@
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->email }}</td>
                         <td>Rp {{ number_format(($item->transaksi?->saldo_akhir ? $item->transaksi->saldo_akhir : '0'),2,',','.') }}</td>
+
                         <td>
                             <span>
                                 <div class="user">
