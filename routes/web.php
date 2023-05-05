@@ -29,13 +29,12 @@ Route::get('/pengaturan_akun', [HalamanController::class, 'akun'])->middleware('
 Route::get('/pengaturan_hotelpesawat', [HalamanController::class, 'pengaturan'])->middleware('auth');
 
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
-Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
-Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
-
 Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
 
 // Route::post('/hapus_pengguna', [UserController::class, 'destroy']);
-Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
+Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
+Route::get('/form_edit_pengguna', [UserController::class, 'update']);
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');

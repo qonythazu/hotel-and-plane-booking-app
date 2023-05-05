@@ -36,14 +36,14 @@
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->role->role }}</td>
                 <td>
-                    <form action="/hapus_pengguna" method="post"></form>
-                    {{-- @method('delete') --}}
-                    @csrf
-                    <button class="btn btn-danger" onclick="return comfirm('yakin mau menghapus data? data yang dihapus tidak dapat dipulihkan kembali.')"><i class="fa-solid fa-trash"></i></button>
-                    {{-- <a href="/hapus_pengguna" class="btn btn-danger" onclick="return comfirm('yakin mau menghapus data? data yang dihapus tidak dapat dipulihkan kembali.')"><i class="fa-solid fa-trash"></i></a> --}}
+                    <form action="{{ route('users.destroy', $item->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></button>
+                    </form>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/form_edit_pengguna" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                 </td>
             </tr>
             @endforeach

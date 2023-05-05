@@ -18,7 +18,7 @@
                 <th scope="col">Nama Hotel</th>
                 <th scope="col">Kota</th>
                 <th scope="col">Stok Kamar</th>
-                <th scope="col">Action</th>                
+                {{-- <th scope="col">Action</th>                 --}}
             </tr>
             </thead>
             <tbody>
@@ -29,12 +29,12 @@
                         <td>{{ $item->deskripsi }}</td>
                         <td>{{ $item->jumlah }}</td>
 
-                        <td>
+                        {{-- <td>
                             <span>
                                 <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                                 <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                             </span>
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\role;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\role;
@@ -28,10 +27,6 @@ class UserController extends Controller
         $datavalid['password'] = bcrypt($datavalid['password']);
 
         $users = User::create($datavalid);
-        // return response()->json([
-        //     'message' => 'User created successfully',
-        //     'user' => $users
-        // ], 201);
         return redirect('/pengaturan_akun')->with('success', 'akun berhasil ditambahkan!');
     }
 
@@ -68,9 +63,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json([
-            'data' => $user
-        ]);
+        return redirect('/form_edit_pengguna')->with('success', 'akun berhasil ditambahkan!');
     }
 
     public function destroy(User $users,$id){
