@@ -16,23 +16,27 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama Hotel</th>
-                <th scope="col">Deskripsi</th>
-                <th scope="col">Harga kamar</th>
+                <th scope="col">Kota</th>
+                <th scope="col">Stok Kamar</th>
+                <th scope="col">Action</th>                
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Grand Citra</td>
-                <td>Balikpapan</td>
-                <td>250000</td>
-                {{-- <td>
-                    <span>
-                        <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                        <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                    </span>
-                </td> --}}
-            </tr>
+                @foreach ($data as $d => $item)
+                    <tr>
+                        <th scope="row">{{ $d+1 }}</th>
+                        <td>{{ $item->nama_produk }}</td>
+                        <td>{{ $item->deskripsi }}</td>
+                        <td>{{ $item->jumlah }}</td>
+
+                        <td>
+                            <span>
+                                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                                <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -45,6 +45,16 @@
                 @enderror
           </div>
 
+          <div class="form-floating">
+            <input type="text" name="harga" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
+            <label for="name">Harga</label>
+              @error('name')
+              <div class="invalid-feedback">
+                  {{ $message }}
+              </div>
+              @enderror
+        </div>
+
             <button class="w-100 btn btn-outline-light mt-4" type="submit">Tambah</button>
             <a href="/pengaturan_hotelpesawat" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
           </form>

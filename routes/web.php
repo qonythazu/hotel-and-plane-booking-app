@@ -30,6 +30,7 @@ Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->mid
 Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
 Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
 Route::post('/hapus_pengguna', [UserController::class, 'destroy']);
+Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
 Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
