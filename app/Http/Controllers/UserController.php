@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\role;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\role;
 
 class UserController extends Controller
 {

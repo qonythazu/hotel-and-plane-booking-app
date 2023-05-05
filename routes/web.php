@@ -6,6 +6,8 @@ use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SessionController;
 
+use Illuminate\Support\Facades\Route;
+
 use App\Models\produk;
 /*
 |--------------------------------------------------------------------------
