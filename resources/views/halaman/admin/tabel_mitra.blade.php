@@ -18,7 +18,7 @@
                 <th scope="col">Nama Mitra</th>
                 <th scope="col">username</th>
                 <th scope="col">Uang Elektronik</th>
-                <th scope="col">Action</th>
+                {{-- <th scope="col">Action</th> --}}
             </tr>
             </thead>
             <tbody>
@@ -29,12 +29,12 @@
                         <td>{{ $item->email }}</td>
                         <td>Rp {{ number_format(($item->transaksi?->saldo_akhir ? $item->transaksi->saldo_akhir : '0'),2,',','.') }}</td>
 
-                        <td>
+                        {{-- <td>
                             <span>
                                 <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                                 <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                             </span>
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
             </tbody>

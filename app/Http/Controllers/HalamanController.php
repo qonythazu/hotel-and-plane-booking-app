@@ -16,7 +16,12 @@ use DB;
 class HalamanController extends Controller
 {
     function dashboard_admin(){
-        return view("halaman/admin/dashboard_admin");
+        $countUsers = DB::table('users')->where('role_id', '=', 3)->count();
+        $countMitra = DB::table('users')->where('role_id', '=', 2)->count();
+        $countPesawat = DB::table('produks')->where('jenis_id', '=', 1)->count();
+        $countHotel = DB::table('produks')->where('jenis_id', '=', 2)->count();
+        
+        return view("halaman/admin/dashboard_admin", compact('countUsers', 'countMitra', 'countPesawat', 'countHotel'));
     }
 
     function akun(){
@@ -33,10 +38,6 @@ class HalamanController extends Controller
         return view("halaman/admin/tabel_pengguna")->with('data', $data);
     }
     
-    // function tambah_pengguna(){
-    //     return view("halaman/admin/form_tambah_pengguna");
-    // }
-
 
     function pengaturan(){
         return view("halaman/admin/pengaturan_hotelpesawat");

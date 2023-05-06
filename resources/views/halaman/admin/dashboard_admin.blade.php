@@ -11,7 +11,7 @@
                         <i class="fa-solid fa-user"></i>
                     </div>
                     <h4 class="card-title">PENGGUNA</h4>
-                    <div class="display-4">11</div>
+                    <div class="display-4">{{ $countUsers }}</div>
                     <a href="/tabel_pengguna"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                         <i class="fa fa-user-tie"></i>
                     </div>
                     <h4 class="card-title">MITRA</h4>
-                    <div class="display-4">2</div>
+                    <div class="display-4">{{ $countMitra }}</div>
                     <a href="/tabel_mitra"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                         <i class="fa-solid fa-hotel"></i>
                     </div>
                     <h4 class="card-title">HOTEL</h4>
-                    <div class="display-4">1</div>
+                    <div class="display-4">{{ $countHotel }}</div>
                     <a href="/tabel_hotel"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <i class="fa-solid fa-plane"></i>
                     </div>
                     <h4 class="card-title">PESAWAT</h4>
-                    <div class="display-4">1</div>
+                    <div class="display-4">{{ $countPesawat }}</div>
                     <a href="/tabel_pesawat"><p class="card-text text-white">Lihat Detail <span class="ml-2">>></span></p></a>
                 </div>
             </div>
