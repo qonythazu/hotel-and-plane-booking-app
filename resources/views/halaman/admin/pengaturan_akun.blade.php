@@ -16,7 +16,7 @@
         @endif
         <h3>Booking App Account</h3><hr>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/form_tambah_pengguna" class="btn btn-outline-light ms-1 mb-2">Akun baru <i class="fas fa-plus"></i></a>
+            <a href="/daftar_akun/create" class="btn btn-outline-light ms-1 mb-2">Akun baru <i class="fas fa-plus"></i></a>
         </div>
         <table class="table table-striped table-hover table-light ">
             <thead>
@@ -25,7 +25,7 @@
                 <th scope="col">Nama Pengguna</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
-                <th scope="col" colspan="2" class="text-center">Action</th>
+                <th scope="col"class="text-center">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -35,15 +35,13 @@
                 <td>{{ $item->name }}</td>
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->role->role }}</td>
-                <td>
-                    <form action="{{ route('users.destroy', $item->id) }}" method="POST">
+                <td class="text-center">
+                    <form action="{{ route('daftar_akun.destroy', $item->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"></button>
+                        <button type="submit" class="btn btn-danger" style="font-size: 1px;" onclick="return confirm('Yakin ingin menghapus data?')"><i data-feather="trash-2"></i></button>
                     </form>
-                </td>
-                <td>
-                    <a href="/form_edit_pengguna" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="/daftar_akun/{{ $item->slug }}/edit" class="btn btn-success" style="font-size: 1px;"><i data-feather="edit"></i></a>
                 </td>
             </tr>
             @endforeach

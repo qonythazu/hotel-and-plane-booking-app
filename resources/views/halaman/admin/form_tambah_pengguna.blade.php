@@ -5,7 +5,7 @@
     <div class="col-md-5">
         <h1 class="text-center mb-4">Tambah Akun Baru</h1>
         <main class="form-adduser">
-          <form action="/form_tambah_pengguna" method="post">
+          <form action="/daftar_akun" method="post">
             @csrf
             <div class="form-floating">
               <input type="text" name="name" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
@@ -53,7 +53,7 @@
             </div>
 
             <button class="w-100 btn btn-outline-light mt-4" type="submit">Tambah</button>
-            <a href="/pengaturan_akun" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
+            <a href="/daftar_akun" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
           </form>
         </main>
     </div>

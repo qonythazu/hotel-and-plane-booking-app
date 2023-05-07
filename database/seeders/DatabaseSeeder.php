@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name'=> 'Destiera Fitryani',
+            'slug'=> 'destiera-fitryani',
             'email'=> 'destiera@gmail.com',
             'password'=> bcrypt('desti0012'),
             'role_id'=> 1
@@ -53,6 +54,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name'=> 'Putri Qonytha',
+            'slug'=> 'putri-qonytha',
             'email'=> 'pqonita@gmail.com',
             'password'=> bcrypt('qonythazu'),
             'role_id'=> 2
@@ -60,6 +62,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name'=> 'Shinta Adelia',
+            'slug'=> 'shinta-adelia',
             'email'=> 'shintaa@gmail.com',
             'password'=> bcrypt('sh1nt4'),
             'role_id'=> 2
@@ -67,6 +70,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name'=> 'Nadhira Rizqana',
+            'slug'=> 'nadhira-rizqana',
             'email'=> 'nadh@gmail.com',
             'password'=> bcrypt('nara166'),
             'role_id'=> 3
@@ -74,6 +78,7 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'name'=> 'Putri Oktatriani',
+            'slug'=> 'putri-oktatriani',
             'email'=> 'putriokta@gmail.com',
             'password'=> bcrypt('putri05'),
             'role_id'=> 3

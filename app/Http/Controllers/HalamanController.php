@@ -20,7 +20,7 @@ class HalamanController extends Controller
         $countMitra = DB::table('users')->where('role_id', '=', 2)->count();
         $countPesawat = DB::table('produks')->where('jenis_id', '=', 1)->count();
         $countHotel = DB::table('produks')->where('jenis_id', '=', 2)->count();
-        
+
         return view("halaman/admin/dashboard_admin", compact('countUsers', 'countMitra', 'countPesawat', 'countHotel'));
     }
 
@@ -37,7 +37,7 @@ class HalamanController extends Controller
 
         return view("halaman/admin/tabel_pengguna")->with('data', $data);
     }
-    
+
 
     function pengaturan(){
         return view("halaman/admin/pengaturan_hotelpesawat");
@@ -99,9 +99,9 @@ class HalamanController extends Controller
         ]);
     }
 
-    function booking($produk){
+    function booking($id){
         $data = kamar::with('produk')
-            ->where('kamars.produk_id','=',$produk)
+            ->where('kamars.produk_id','=',$id)
             ->get();
 
         return view("halaman/pengguna/booking",[
@@ -126,13 +126,13 @@ class HalamanController extends Controller
        $data = produk::with('jenis')
        ->where('produks.jenis_id', '=', 2)
        ->get();
-       
+
         return view("halaman/admin/tabel_hotel")->with('data', $data);
     }
     function tabel_pesawat(){
         $data = jadwal::with('produk')
         ->get();
-        
+
          return view("halaman/admin/tabel_pesawat")->with('data', $data);
      }
 }

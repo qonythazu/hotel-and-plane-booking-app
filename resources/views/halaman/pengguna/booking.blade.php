@@ -4,7 +4,9 @@
 @section('content')
 <div class="column">
     <div class="booking-hotel bg-light p-3 m-3 rounded-2">
-
+        <div>
+            
+        </div>
     </div>
 </div>
 @endsection

@@ -46,11 +46,10 @@
                 </div>
             </div>
         </div>
-        <a href="/pengaturan_akun" class="btn btn-outline-light ms-1"><i class="fas fa-users-cog"></i> Pengaturan Akun</a>
+        <a href="/daftar_akun" class="btn btn-outline-light ms-1"><i class="fas fa-users-cog"></i> Pengaturan Akun</a>
         <a href="/pengaturan_hotelpesawat" class="btn btn-outline-light ms-1"><i class="fas fa-users-cog"></i> Pengaturan Hotel dan Pesawat</a>
         <a href="/isi_uang_elektronik" class="btn btn-outline-light ms-1">Isi Uang Elektronik</a>
         <a href="/tarik_uang_elektronik" class="btn btn-outline-light ms-1">Tarik Uang Elektronik</a>
-        
+
     </div>
 @endsection
-    

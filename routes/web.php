@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserAccController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SessionController;
@@ -31,11 +32,7 @@ Route::get('/pengaturan_hotelpesawat', [HalamanController::class, 'pengaturan'])
 Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
 Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
 
-// Route::post('/hapus_pengguna', [UserController::class, 'destroy']);
-Route::get('/form_tambah_pengguna', [UserController::class, 'index'])->middleware('auth');
-Route::post('/form_tambah_pengguna', [UserController::class, 'store']);
-Route::get('/form_edit_pengguna', [UserController::class, 'update']);
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+Route::resource('/daftar_akun', UserAccController::class)->middleware('auth');
 
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
@@ -48,7 +45,7 @@ Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel'])-
 Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
 Route::get('/pesawat_search', [HalamanController::class, 'pesawat'])->middleware('auth');
 Route::get('/hotel_search', [HalamanController::class, 'hotel'])->middleware('auth');
-Route::get('/booking_hotel/{produk:id}', [HalamanController::class, 'booking'])->middleware('auth')->name('booking.detail');
+Route::get('/booking_hotel/{id}', [HalamanController::class, 'booking'])->middleware('auth')->name('booking.detail');
 
 // PUNYA MITRA //
 Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra'])->middleware('auth');
