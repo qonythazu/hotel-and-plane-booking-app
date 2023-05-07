@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use \Cviebrock\EloquentSluggable\Services\SlugService;
+
 use App\Models\User;
 use App\Models\role;
+use App\Models\transaksi;
+
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class UserAccController extends Controller
@@ -49,7 +53,23 @@ class UserAccController extends Controller
 
         $datavalid['password'] = bcrypt($datavalid['password']);
         $datavalid['slug'] = SlugService::createSlug(User::class, 'slug', $datavalid['name']);
-        $users = User::create($datavalid);
+
+        DB::transaction(function () use ($datavalid) {
+            // Tambah data pada tabel pertama
+            $users = User::create($datavalid);
+
+            // Tambah data pada tabel kedua
+            $wallet = new transaksi;
+            $wallet->user_id = $users->id;
+            $wallet->saldo_awal = 0;
+            $wallet->debit = 0;
+            $wallet->kredit = 0;
+            $wallet->saldo_akhir = 0;
+            $wallet->keterangan = 'akun baru';
+            $wallet->save();
+
+        });
+
         return redirect('/daftar_akun')->with('success', 'akun berhasil ditambahkan!');
     }
 
