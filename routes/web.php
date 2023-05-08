@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\produk;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UserAccController;
-use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\SessionController;
 
 
-use App\Models\produk;
+use App\Http\Controllers\UserAccController;
+use App\Http\Controllers\BookingHotelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -41,10 +42,11 @@ Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat'])->middl
 Route::get('/form_tambah_hotelpesawat', [ProdukController::class, 'index'])->middleware('auth');
 
 // PUNYA PENGGUNA //
+Route::resource('/hotel', BookingHotelController::class)->middleware('auth');
+
 Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
 Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
 Route::get('/pesawat_search', [HalamanController::class, 'pesawat'])->middleware('auth');
-Route::get('/hotel_search', [HalamanController::class, 'hotel'])->middleware('auth');
 Route::get('/booking_hotel/{id}', [HalamanController::class, 'booking'])->middleware('auth')->name('booking.detail');
 
 // PUNYA MITRA //

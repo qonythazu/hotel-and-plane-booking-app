@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produk_id')->constrained();
             $table->integer('harga');
+            $table->date('check_in');
             $table->timestamps();
         });
     }
