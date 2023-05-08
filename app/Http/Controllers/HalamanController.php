@@ -46,9 +46,20 @@ class HalamanController extends Controller
     function isi_uang_elektronik(){
         return view("halaman/admin/isi_uang_elektronik");
     }
+
+    public function search(Request $request)
+    {
+        $username = $request->input('username');
+        $hasilPencarian = User::where('name', 'like', "%$username%")->get();
+
+        return view('halaman/admin/isi_uang_elektronik', compact('hasilPencarian'));
+    }
+
+
     function tarik_uang_elektronik(){
         return view("halaman/admin/tarik_uang_elektronik");
     }
+
     function halaman_mitra(){
         $data = DB::table('produks')
             ->select('produks.nama_produk as name','produks.produk as tipe', 'produks.deskripsi as deskripsi')

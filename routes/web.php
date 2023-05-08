@@ -35,6 +35,8 @@ Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
 Route::resource('/daftar_akun', UserAccController::class)->middleware('auth');
 
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
+Route::get('/search', [HalamanController::class, 'search'])->name('search');
+
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
 Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
 Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat'])->middleware('auth');
@@ -58,5 +60,4 @@ Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk'])->middl
 Route::get('/dashboard', [HalamanController::class, 'dashboard'])->middleware('auth');
 Route::get('/', [SessionController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/sesi/login', [SessionController::class, 'login']);
-
 Route::get('/sesi/logout', [SessionController::class, 'logout']);
