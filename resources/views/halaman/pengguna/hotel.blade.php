@@ -32,7 +32,7 @@
                         @if($produk->count())
                         @foreach ( $produk as $p )
                         <div class="col-md-3 mb-4">
-                            <div class="card {{ $p->check_in == \Carbon\Carbon::now()->format('Y-m-d') ? 'card-disabled' : '' }}">
+                            <div class="card {{ $p->check_in == \Carbon\Carbon::now()->tz("Asia/Makassar")->format('Y-m-d') ? 'card-disabled' : '' }}">
                                 <img src="img/hotel.png" width="635px" class="card-img-top" alt="...">
                                 <div class="card-body d-flex flex-column">
                                     <h4 class="card-title d-flex justify-content-between align-items-end">

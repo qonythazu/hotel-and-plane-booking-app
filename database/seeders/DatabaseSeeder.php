@@ -297,7 +297,7 @@ class DatabaseSeeder extends Seeder
             'check_in' => '2023-05-22'
         ]);
 
-        $now = Carbon::now();
+        $now = Carbon::now()->tz("Asia/Makassar");
 
         kamar::create([
             'produk_id' => 9,
