@@ -14,8 +14,6 @@ a:active {
     background-color: #f1bcd7 !important;
 }
 
-
-
 .formlogin {
     box-sizing: border-box;
     width: 600px;
@@ -208,6 +206,15 @@ fieldset:disabled .btn {
     border-color: #ff6fb5 !important;
 }
 
+.tgl.disabled,
+.tgl:disabled,
+fieldset:disabled .tgl {
+    color: #ff6fb5 !important;
+    pointer-events: none !important;
+    background-color: white !important;
+    border-color: white !important;
+}
+
 .column .btn {
     /* background-color: #e78bbb;
     color: white; */
@@ -243,12 +250,12 @@ fieldset:disabled .btn {
     color: white;
 }
 
-.mtr .btn-b{
+.mtr .btn-b {
     background-color: #f1bcd7;
     color: white;
 }
 
-.mtr .btn-b:hover{
+.mtr .btn-b:hover {
     background-color: #e7cad9;
     color: white;
 }
@@ -267,10 +274,7 @@ fieldset:disabled .btn {
     color: white;
 }
 
-/* .tb .form {
-    background: white;
-    border-radius: 5px;
-    height: 95px;
-    padding-left: 12px;
-    padding-top: 5px;
-} */
+.card-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}

@@ -12,6 +12,8 @@ use App\Models\role;
 use App\Models\jenis;
 use App\Models\kamar;
 
+use Carbon\Carbon;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -267,32 +269,46 @@ class DatabaseSeeder extends Seeder
 
         kamar::create([
             'produk_id' => 5,
-            'harga' => 200000
+            'harga' => 200000,
+            'check_in' => '2023-05-20'
         ]);
 
         kamar::create([
             'produk_id' => 6,
-            'harga' => 300000
+            'harga' => 300000,
+            'check_in' => '2023-05-09'
         ]);
 
         kamar::create([
             'produk_id' => 7,
-            'harga' => 150000
+            'harga' => 150000,
+            'check_in' => '2023-05-20'
         ]);
 
         kamar::create([
             'produk_id' => 8,
-            'harga' => 95000
+            'harga' => 95000,
+            'check_in' => '2023-05-23'
         ]);
 
         kamar::create([
             'produk_id' => 9,
-            'harga' => 550000
+            'harga' => 550000,
+            'check_in' => '2023-05-22'
+        ]);
+
+        $now = Carbon::now();
+
+        kamar::create([
+            'produk_id' => 9,
+            'harga' => 1000,
+            'check_in' => $now
         ]);
 
         kamar::create([
             'produk_id' => 10,
-            'harga' => 25000
+            'harga' => 25000,
+            'check_in' => $now
         ]);
     }
 }
