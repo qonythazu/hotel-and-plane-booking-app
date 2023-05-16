@@ -56,6 +56,10 @@ class User extends Authenticatable
         return $this->hasMany(produk::class);
     }
 
+    public function historytransaksi(){
+        return $this->hasMany(HistoryTransaksi::class);
+    }
+
     public function transaksi(){
         return $this->hasOne(transaksi::class);
     }
