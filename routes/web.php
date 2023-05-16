@@ -6,6 +6,8 @@ use App\Http\Controllers\UserAccController;
 use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\EwalletController;
 
 
 use App\Models\produk;
@@ -35,7 +37,10 @@ Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
 Route::resource('/daftar_akun', UserAccController::class)->middleware('auth');
 
 Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
-Route::get('/search', [HalamanController::class, 'search'])->name('search');
+// Route::get('/search', [HalamanController::class, 'search'])->name('search');
+// Route::post('/add-saldo', [TransaksiController::class, 'addSaldo'])->name('add-saldo');
+
+Route::resource('/ewallet', EwalletController::class)->middleware('auth');
 
 Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
 Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');

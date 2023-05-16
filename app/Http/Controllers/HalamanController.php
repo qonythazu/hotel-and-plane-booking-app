@@ -47,14 +47,13 @@ class HalamanController extends Controller
         return view("halaman/admin/isi_uang_elektronik");
     }
 
-    public function search(Request $request)
-    {
-        $username = $request->input('username');
-        $hasilPencarian = User::where('name', 'like', "%$username%")->get();
+    // function search(Request $request)
+    // {
+    //     $username = $request->input('username');
+    //     $hasilPencarian = User::where('name', 'like', "%$username%")->get();
 
-        return view('halaman/admin/isi_uang_elektronik', compact('hasilPencarian'));
-    }
-
+    //     return view('halaman/admin/isi_uang_elektronik', compact('hasilPencarian'));
+    // }
 
     function tarik_uang_elektronik(){
         return view("halaman/admin/tarik_uang_elektronik");
