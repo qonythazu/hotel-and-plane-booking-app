@@ -28,40 +28,47 @@ use App\Http\Controllers\BookingHotelController;
 // });
 
 // PUNYA ADMIN //
-Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin'])->middleware('auth');
-Route::get('/pengaturan_akun', [HalamanController::class, 'akun'])->middleware('auth');
-Route::get('/pengaturan_hotelpesawat', [HalamanController::class, 'pengaturan'])->middleware('auth');
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/dashboard_admin', [HalamanController::class, 'dashboard_admin']);
+    Route::get('/pengaturan_akun', [HalamanController::class, 'akun']);
+    Route::get('/pengaturan_hotelpesawat', [HalamanController::class, 'pengaturan']);
 
-Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna'])->middleware('auth');
-Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
+    Route::get('/tabel_pengguna', [HalamanController::class, 'tabel_pengguna']);
+    Route::post('/hapus_hotelpesawat', [ProdukController::class, 'destroy']);
 
-Route::resource('/daftar_akun', UserAccController::class)->middleware('auth');
+    Route::resource('/daftar_akun', UserAccController::class);
 
-Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik'])->middleware('auth');
-// Route::get('/search', [HalamanController::class, 'search'])->name('search');
-// Route::post('/add-saldo', [TransaksiController::class, 'addSaldo'])->name('add-saldo');
+    Route::get('/isi_uang_elektronik', [HalamanController::class, 'isi_uang_elektronik']);
+    // Route::get('/search', [HalamanController::class, 'search'])->name('search');
+    // Route::post('/add-saldo', [TransaksiController::class, 'addSaldo'])->name('add-saldo');
 
-Route::resource('/ewallet', EwalletController::class)->middleware('auth');
+    Route::resource('/ewallet', EwalletController::class);
 
-Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra'])->middleware('auth');
-Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel'])->middleware('auth');
-Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat'])->middleware('auth');
-Route::get('/form_tambah_hotelpesawat', [ProdukController::class, 'index'])->middleware('auth');
+    Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra']);
+    Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel']);
+    Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat']);
+    Route::get('/form_tambah_hotelpesawat', [ProdukController::class, 'index']);
+    Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik']);
+});
 
 // PUNYA PENGGUNA //
-Route::resource('/hotel', BookingHotelController::class)->middleware('auth');
+Route::group(['middleware' => 'userAdmin'], function () {
+    Route::resource('/hotel', BookingHotelController::class);
 
-Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel'])->middleware('auth');
-Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane'])->middleware('auth');
-Route::get('/pesawat_search', [HalamanController::class, 'pesawat'])->middleware('auth');
-Route::get('/booking_hotel/{id}', [HalamanController::class, 'booking'])->middleware('auth')->name('booking.detail');
+    Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel']);
+    Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane']);
+    Route::get('/pesawat_search', [HalamanController::class, 'pesawat']);
+    Route::get('/booking_hotel/{id}', [HalamanController::class, 'booking'])->name('booking.detail');
+});
 
 // PUNYA MITRA //
-Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra'])->middleware('auth');
-Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik'])->middleware('auth');
+Route::group(['middleware' => 'mitraAdmin'], function () {
+
+    Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra']);
 
 // PUNYA MITRA & ADMIN //
-Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk'])->middleware('auth');
+    Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk']);
+});
 
 // PUNYA UMUM //
 Route::get('/dashboard', [HalamanController::class, 'dashboard'])->middleware('auth');
