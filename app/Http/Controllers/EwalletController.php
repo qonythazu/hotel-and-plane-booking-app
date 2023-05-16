@@ -49,25 +49,25 @@ class EwalletController extends Controller
         $transaksi->debit = $request['debit'] ? $request['debit'] : 0;
         $transaksi->kredit = $request['kredit'] ? $request['kredit'] : 0;
         $transaksi->saldo_akhir = 0;
-        $transaksi->keterangan = 'Penambahan saldo'; // Atur nilai keterangan sesuai kebutuhan
+        $transaksi->keterangan = 'Perubahan saldo'; 
         $transaksi->save();
 
         // update transaksi
-        // $ewallet = transaksi::where('id_user',$request['id']);
-        // if($ewallet){
-        //     $saldo_akhir = $ewallet->saldo_akhir + $request['debit'];
-        //     $ewallet->update(['saldo_akhir' => $saldoAkhir]);
-        //     $ewallet->update(['debit' => $request['debit']]);
-        //     $ewallet->update(['keterangan' => 'Top Up saldo']);
+        if(isset($request['debit'])){
+            $ewallet = transaksi::where('user_id',$request['id'])->first();
+            $saldo_akhir = $ewallet->saldo_akhir + $request['debit'];
+            $ewallet->update(['saldo_akhir' => $saldo_akhir]);
+            $ewallet->update(['debit' => $request['debit']]);
+            $ewallet->update(['keterangan' => 'Top Up saldo']);
             
             
-        // } elseif(isset($request['kredit'])){
-        //     $ewallet = transaksi::where('id_user',$request['id']);
-        //     $saldo_akhir = $ewallet->saldo_akhir - $request['kredit'];
-        //     $ewallet->update(['saldo_akhir' => $saldoAkhir]);
-        //     $ewallet->update(['kredit' => $request['kredit']]);
-        //     $ewallet->update(['keterangan' => 'Top Up saldo']);
-        // }
+        } elseif(isset($request['kredit'])){
+            $ewallet = transaksi::where('user_id',$request['id'])->first();
+            $saldo_akhir = $ewallet->saldo_akhir - $request['kredit'];
+            $ewallet->update(['saldo_akhir' => $saldo_akhir]);
+            $ewallet->update(['kredit' => $request['kredit']]);
+            $ewallet->update(['keterangan' => 'Penarikan saldo']);
+        }
 
         return redirect('/ewallet')->with('success', 'Saldo berhasil ditambahkan.');
     }

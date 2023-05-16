@@ -53,7 +53,7 @@
                                 @csrf
                                 <div class="modal-body">
                                 {{-- <div class="my-2"> --}}
-                                    <input type="text" name="id" class="form-control" value="{{$d->id}}">
+                                    <input type="hidden" name="id" class="form-control" value="{{$d->id}}">
                                     <input type="text" name="debit" class="form-control">
                                     {{-- </div> --}}
                                 </div>
@@ -79,7 +79,7 @@
                                 @csrf
                                 <div class="modal-body">
                                 {{-- <div class="my-2"> --}}
-                                    <input type="text" name="id" class="form-control" value="{{$d->id}}">
+                                    <input type="hidden" name="id" class="form-control" value="{{$d->id}}">
                                     <input type="text" name="kredit" class="form-control">
                                     {{-- </div> --}}
                                 </div>
