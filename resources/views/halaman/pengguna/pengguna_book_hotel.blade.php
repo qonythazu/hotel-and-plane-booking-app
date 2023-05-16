@@ -5,7 +5,7 @@
         <h4>Saldo Anda</h4>
             @foreach ($data as $d)
                 @if ($d->id == Auth::user()->id)
-                    <h2> Rp. {{number_format($d->transaksi->saldo_akhir,2,',','.')}}</h2>
+                    <h2> Rp. {{$d->transaksi?->saldo_akhir ? number_format($d->transaksi->saldo_akhir,2,',','.') : 0}}</h2>
                 @endif
             @endforeach
     </div>

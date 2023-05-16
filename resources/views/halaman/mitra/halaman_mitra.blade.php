@@ -23,15 +23,14 @@
             @foreach($data as $d => $item)
             <tr>
                 <th scope="row">{{ $d+1 }}</th>
-                <td>{{ $item->name }}</td>
-                <td>{{ $item->tipe }}</td>
+                <td>{{ $item->nama_produk }}</td>
+                <td>{{ $item->jenis->jenis }}</td>
                 <td>{{ $item->deskripsi }}</td>
+                <td>{{ $item->jumlah }}</td>
                 <td></td>
                 <td>
                     <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                </td>
-                <td>
-                    <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>   
+                    <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
                 </td>
             </tr>
             @endforeach

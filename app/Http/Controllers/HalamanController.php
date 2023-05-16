@@ -60,10 +60,9 @@ class HalamanController extends Controller
     }
 
     function halaman_mitra(){
-        $data = DB::table('produks')
-            ->select('produks.nama_produk as name','produks.produk as tipe', 'produks.deskripsi as deskripsi')
-            ->get();
-        return view("halaman/mitra/halaman_mitra")->with('data', $data);
+        return view("halaman/mitra/halaman_mitra",[
+            'data' => produk::all()
+        ]);
     }
     function pengguna_book_hotel(){
         $data = User::with('transaksi')->get();
@@ -120,6 +119,7 @@ class HalamanController extends Controller
     }
 
     function tambah_produk(){
+
         return view("halaman/tambah_produk");
     }
     function dashboard(){
