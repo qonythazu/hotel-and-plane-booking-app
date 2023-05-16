@@ -43,7 +43,7 @@ class EwalletController extends Controller
 
         // dd($request['id'],$request['debit']);
         
-        // tambah data
+        // tambah data 
         $transaksi = new HistoryTransaksi();
         $transaksi->user_id = $request['id'];
         $transaksi->debit = $request['debit'] ? $request['debit'] : 0;
