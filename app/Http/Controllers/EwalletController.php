@@ -14,11 +14,13 @@ class EwalletController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('halaman/admin/isi_uang_elektronik',[
+        $username = $request->input('username');
+
+        return view('halaman/admin/isi_uang_elektronik', [
             'saldo' => User::with('transaksi')->get(),
-            'data' => transaksi::filter(request(['username']))->get()
+            'data' => transaksi::filter(['username' => $username])->get(),
         ]);
     }
 
