@@ -23,7 +23,7 @@ class EwalletController extends Controller
             'data' => transaksi::filter(['username' => $username])->get(),
         ]);
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *

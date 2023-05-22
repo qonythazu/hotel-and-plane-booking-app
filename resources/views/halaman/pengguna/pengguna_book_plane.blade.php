@@ -15,40 +15,51 @@
             <a href="#" class="btn btn-light ms-2 disabled " aria-disabled="true">Pesawat</a>
         </div>
         <div class="booking-pesawat">
-            <form action="" class="form-inline">
-            <div class="bgback p-3 pb-3 m-3 rounded-2 d-flex">
+            <form action="/pesawat" class="form-inline">
+            <div class="bgback p-3 pb-3 m-3 rounded-2 d-flex align-items-end">
                 <div class="column col-md-4 px-3">
+                    <h5 class="text-light">Tanggal</h5>
                     <div>
-                        <input type="date" class="form-control" id="tanggalbooking">
+                        <input type="date" class="form-control" name="check_in" id="tanggalbooking" required>
                     </div>
                 </div>
 
-                <div class="column col-md-3 px-3 d-flex justify-content-center">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-end" style="width: 300px; border:none; color:black;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Kota Asal
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <div class="column col-md-3 px-3 d-flex justify-content-center flex-column">
+                    <h5 class="text-light">Asal</h5>
+                    <div class="dropdown" style="width: 300px; border:none; color:black;">
+                        <select class="form-select" aria-label="Default select example" name="kota_asal" required>
+                            <option> </option>
                             @foreach ($produk->unique('kota_asal') as $p)
-                            <li><a class="dropdown-item" href="#">{{ $p->kota_asal }}</a></li>
+                                @if($p['kota_asal']>1)
+                                    @if (old('kota_asal') == $p->kota_asal)
+                                        <option value="{{ $p->kota_asal }}" selected> {{ $p->kota_asal }} </option>
+                                    @else
+                                        <option value="{{ $p->kota_asal }}"> {{ $p->kota_asal }} </option>
+                                    @endif
+                                @endif
                             @endforeach
-                        </ul>
-                        </div>
+                        </select>
+                    </div>
                 </div>
-                <div class="column col-md-3 px-3 d-flex justify-content-center">
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle dropdown-menu-end" style="width: 300px; border:none; color:black;" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Kota Tujuan
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <div class="column col-md-3 px-3 d-flex justify-content-center flex-column">
+                    <h5 class="text-light">Tujuan</h5>
+                    <div class="dropdown" style="width: 300px; border:none; color:black;">
+                        <select class="form-select" aria-label="Default select example" name="kota_tiba" required>
+                            <option> </option>
                             @foreach ($produk->unique('kota_tiba') as $p)
-                            <li><a class="dropdown-item" href="#">{{ $p->kota_tiba }}</a></li>
+                                @if($p['kota_tiba']>1)
+                                    @if (old('kota_tiba') == $p->kota_tiba)
+                                        <option value="{{ $p->kota_tiba }}" selected> {{ $p->kota_tiba }} </option>
+                                    @else
+                                        <option value="{{ $p->kota_tiba }}"> {{ $p->kota_tiba }} </option>
+                                    @endif
+                                @endif
                             @endforeach
-                        </ul>
-                        </div>
+                        </select>
+                    </div>
                 </div>
                 <div class="column col-md-2 px-3 d-flex justify-content-center">
-                    <a href="/pesawat_search" class="btn btn-outline-secondary" style="width: 200px; border:none; color:black;" type="button" id="button-addon2">Cari Penerbangan <i class="fas fa-search"></i></a>
+                    <button type="submit" class="btn btn-outline-secondary" style="width: 200px; border:none; color:black;" id="button-addon2">Cari Penerbangan <i class="fas fa-search"></i></button>
                 </div>
             </div>
             </form>
