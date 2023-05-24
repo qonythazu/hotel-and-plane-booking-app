@@ -12,6 +12,7 @@ use App\Http\Controllers\EwalletController;
 
 use App\Http\Controllers\UserAccController;
 use App\Http\Controllers\BookingHotelController;
+use App\Http\Controllers\BookingPlaneController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -54,6 +55,7 @@ Route::group(['middleware' => 'admin'], function () {
 // PUNYA PENGGUNA //
 Route::group(['middleware' => 'userAdmin'], function () {
     Route::resource('/hotel', BookingHotelController::class);
+    Route::resource('/pesawat', BookingPlaneController::class);
 
     Route::get('/pesanan_saya', [HalamanController::class, 'pesanan']);
     Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel']);

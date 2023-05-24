@@ -1,5 +1,4 @@
 @extends('layout/app')
-
 @section('content')
     <div class="saldo-anda bgback m-3 p-3 text-white rounded-2 text-center">
         <h4>Saldo Anda</h4>
@@ -14,6 +13,12 @@
             <div class="bgback p-3 pb-3 m-3 rounded-2 d-flex">
                 <h4 style="color:white;">Hasil Pencarian</h4>
             </div>
+            <div class="bgback p-3 pb-3 m-3 text-light rounded-2 d-flex flex-column">
+                <p class="pb-0 mb-0"><a href="/booking_pesawat" class="text-light"><i data-feather="arrow-left" style="width: 14px; height:14px"></i>&nbsp;kembali</a></p>
+                <hr class="pb-0 pt-0 mt-1 mb-3">
+                     <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->format('d F Y') }}</button></p>
+                     <h5>Hasil Pencarian: <strong>Kota {{ request('kota_asal') }}</strong> <i class="fa-solid fa-arrow-right"></i><strong> Kota {{ request('kota_tiba') }}</strong></h5>
+             </div>
                 <div class="bgback p-3 pb-3 m-3 rounded-2 text-white d-flex justify-content-center">
                 <table class="table bg-light table-custom text-center" style="width: 75%;">
                     <thead>
@@ -22,12 +27,11 @@
                         <th scope="col">Berangkat</th>
                         <th scope="col"></th>
                         <th scope="col">Tiba</th>
-
                         <th scope="col">Harga Per Orang</th>
-
                         </tr>
                     </thead>
                     <tbody>
+                        @if($produk->count())
                         @foreach ($produk as $p)
                         @php
                             $berangkat = \Carbon\Carbon::parse($p->waktu_pergi);
@@ -74,6 +78,11 @@
                         </td>
                         </tr>
                         @endforeach
+                        @else
+                        <td colspan="5" class="text-center" style="vertical-align: middle;padding: 25px">
+                            <p>Data Tidak Ditemukan</p>
+                        </td>
+                        @endif
                     </tbody>
                     </table>
                 {{-- @foreach ($produk as $p)
@@ -90,7 +99,6 @@
                 </div>
                 @endforeach --}}
             </div>
-
         </div>
     </div>
 @endsection
