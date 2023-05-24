@@ -19,7 +19,6 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('jenis_id')->constrained();
-            $table->integer('jumlah');
             $table->timestamps();
         });
     }

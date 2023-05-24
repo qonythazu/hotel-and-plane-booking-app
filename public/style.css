@@ -6,6 +6,99 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+.btn4 {
+    background-color: #e78bbb !important;
+    color:  white !important;
+}
+
+/*progressbar*/
+.progressbar {
+    overflow: hidden;
+    counter-reset: step;
+    width: 60%;
+    margin: 0 auto 30px;
+}
+.progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 18px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    text-decoration: none;
+}
+.progressbar li a {
+    color: #d864b3;
+}
+.progressbar li a:hover {
+    text-decoration: none;
+    color: #333;
+}
+.progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 50px;
+    line-height: 50px;
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background: #eeeeee;
+    border-radius: 50%;
+    margin: 0 auto 5px auto;
+}
+.progressbar li.complete:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    width: 50px;
+    line-height: 50px;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    background: #e78bbb;
+    color: white;
+    border-radius: 50%;
+    margin: 0 auto 5px auto;
+}
+
+.progressbar li.active:before {
+    background: #e78bbb;
+    color: white;
+}
+
+/* connector lines */
+.progressbar li:first-child.active:after,
+.progressbar li:nth-child(3):not(.active):after {
+    display: none;
+}
+
+.progressbar li:first-child::after {
+    content: "";
+    height: 3px;
+    width: calc(100%);
+    background-color: #e78bbb;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(10%);
+}
+
+.progressbar li:nth-child(3)::after {
+    content: "";
+    height: 3px;
+    width: calc(80%);
+    background-color: #e78bbb;
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-112%);
+}
+
+.displayNone {
+    display: none;
+}
+
 a:link {
     text-decoration: none;
 }

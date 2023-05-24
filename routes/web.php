@@ -55,6 +55,7 @@ Route::group(['middleware' => 'admin'], function () {
 Route::group(['middleware' => 'userAdmin'], function () {
     Route::resource('/hotel', BookingHotelController::class);
 
+    Route::get('/pesanan_saya', [HalamanController::class, 'pesanan']);
     Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel']);
     Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane']);
     Route::get('/pesawat_search', [HalamanController::class, 'pesawat']);

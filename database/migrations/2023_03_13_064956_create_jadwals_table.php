@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('tgl_tiba');
             $table->time('waktu_pergi');
             $table->time('waktu_tiba');
+            $table->integer('jumlah');
             $table->integer('harga');
             $table->timestamps();
         });

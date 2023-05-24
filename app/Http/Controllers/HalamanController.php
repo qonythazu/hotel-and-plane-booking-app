@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\transaksi;
@@ -110,14 +111,16 @@ class HalamanController extends Controller
 
     function booking($id){
         $data = kamar::with('produk')
-            ->where('kamars.produk_id','=',$id)
+            ->where('id','=',$id)
             ->get();
-
         return view("halaman/pengguna/booking",[
             'data' => $data,
         ]);
     }
 
+    function pesanan(){
+        return view("halaman/pengguna/pesanan");
+    }
     function tambah_produk(){
 
         return view("halaman/tambah_produk");
