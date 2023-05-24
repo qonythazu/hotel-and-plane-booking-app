@@ -143,80 +143,70 @@ class DatabaseSeeder extends Seeder
             'nama_produk'=> 'Citilink',
             'deskripsi'=> 'Ekonomi',
             'user_id' => 2,
-            'jenis_id' => 1,
-            'jumlah'=> 20
+            'jenis_id' => 1
         ]);
 
         produk::create([
             'nama_produk'=> 'Citilink',
             'deskripsi'=> 'Bisnis',
             'user_id' => 2,
-            'jenis_id' => 1,
-            'jumlah'=> 20
+            'jenis_id' => 1
         ]);
 
         produk::create([
             'nama_produk'=> 'Lion Air',
             'deskripsi'=> 'Ekonomi',
             'user_id' => 3,
-            'jenis_id' => 1,
-            'jumlah'=> 20
+            'jenis_id' => 1
         ]);
 
         produk::create([
             'nama_produk'=> 'Lion Air',
             'deskripsi'=> 'Bisnis',
             'user_id' => 3,
-            'jenis_id' => 1,
-            'jumlah'=> 20
+            'jenis_id' => 1
         ]);
 
         produk::create([
             'nama_produk'=> 'Aston',
             'deskripsi'=> 'Balikpapan',
             'user_id' => 2,
-            'jenis_id' => 2,
-            'jumlah'=> 3
+            'jenis_id' => 2
         ]);
 
         produk::create([
             'nama_produk'=> 'Borneo Bay',
             'deskripsi'=> 'Samarinda',
             'user_id' => 2,
-            'jenis_id' => 2,
-            'jumlah'=> 3
+            'jenis_id' => 2
         ]);
 
         produk::create([
             'nama_produk'=> 'Aston',
             'deskripsi'=> 'Bontang',
             'user_id' => 2,
-            'jenis_id' => 2,
-            'jumlah'=> 3
+            'jenis_id' => 2
         ]);
 
         produk::create([
             'nama_produk'=> 'Pasifica',
             'deskripsi'=> 'Balikpapan',
             'user_id' => 3,
-            'jenis_id' => 2,
-            'jumlah'=> 5
+            'jenis_id' => 2
         ]);
 
         produk::create([
             'nama_produk'=> 'Pasifica',
             'deskripsi'=> 'Sangatta',
             'user_id' => 3,
-            'jenis_id' => 2,
-            'jumlah'=> 5
+            'jenis_id' => 2
         ]);
 
         produk::create([
             'nama_produk'=> 'Novotel',
             'deskripsi'=> 'Samarinda',
             'user_id' => 3,
-            'jenis_id' => 2,
-            'jumlah'=> 5
+            'jenis_id' => 2
         ]);
 
         // MEMBUAT JADWAL PESAWAT
@@ -229,6 +219,7 @@ class DatabaseSeeder extends Seeder
             'tgl_tiba' => '2023-05-12',
             'waktu_pergi' => '10:10:00',
             'waktu_tiba' => '13:30:00',
+            'jumlah' => 3,
             'harga' => 500000
         ]);
 
@@ -240,6 +231,7 @@ class DatabaseSeeder extends Seeder
             'tgl_tiba' => '2023-05-20',
             'waktu_pergi' => '12:00:00',
             'waktu_tiba' => '15:25:00',
+            'jumlah' => 3,
             'harga' => 800000
         ]);
 
@@ -251,6 +243,7 @@ class DatabaseSeeder extends Seeder
             'tgl_tiba' => '2023-05-12',
             'waktu_pergi' => '08:30:00',
             'waktu_tiba' => '12:00:00',
+            'jumlah' => 3,
             'harga' => 400000
         ]);
 
@@ -262,6 +255,7 @@ class DatabaseSeeder extends Seeder
             'tgl_tiba' => '2023-05-20',
             'waktu_pergi' => '18:44:00',
             'waktu_tiba' => '22:25:00',
+            'jumlah' => 3,
             'harga' => 1200000
         ]);
 
@@ -270,44 +264,51 @@ class DatabaseSeeder extends Seeder
         kamar::create([
             'produk_id' => 5,
             'harga' => 200000,
-            'check_in' => '2023-05-20'
+            'jumlah' => 3,
+            'check_in' => '2023-06-20'
         ]);
 
         kamar::create([
             'produk_id' => 6,
             'harga' => 300000,
-            'check_in' => '2023-05-09'
+            'jumlah' => 3,
+            'check_in' => '2023-06-09'
         ]);
 
         kamar::create([
             'produk_id' => 7,
             'harga' => 150000,
-            'check_in' => '2023-05-20'
+            'jumlah' => 3,
+            'check_in' => '2023-06-20'
         ]);
 
         kamar::create([
             'produk_id' => 8,
             'harga' => 95000,
-            'check_in' => '2023-05-23'
+            'jumlah' => 3,
+            'check_in' => '2023-06-23'
         ]);
 
         kamar::create([
             'produk_id' => 9,
             'harga' => 550000,
-            'check_in' => '2023-05-22'
+            'jumlah' => 3,
+            'check_in' => '2023-06-22'
         ]);
 
-        $now = Carbon::now()->tz("Asia/Makassar");
+        $now = Carbon::now();
 
         kamar::create([
             'produk_id' => 9,
             'harga' => 1000,
+            'jumlah' => 3,
             'check_in' => $now
         ]);
 
         kamar::create([
             'produk_id' => 10,
             'harga' => 25000,
+            'jumlah' => 3,
             'check_in' => $now
         ]);
     }

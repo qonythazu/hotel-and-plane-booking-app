@@ -44,29 +44,32 @@ class EwalletController extends Controller
     {
 
         // dd($request['id'],$request['debit']);
-        
-        // tambah data 
+
+        // tambah data
         $transaksi = new HistoryTransaksi();
         $transaksi->user_id = $request['id'];
         $transaksi->debit = $request['debit'] ? $request['debit'] : 0;
         $transaksi->kredit = $request['kredit'] ? $request['kredit'] : 0;
-        $transaksi->saldo_akhir = 0;
-        $transaksi->keterangan = 'Perubahan saldo'; 
+        $transaksi->keterangan = 'Perubahan saldo';
         $transaksi->save();
 
         // update transaksi
         if(isset($request['debit'])){
             $ewallet = transaksi::where('user_id',$request['id'])->first();
+            $ewallet->update(['saldo_awal' => $ewallet->saldo_akhir]);
             $saldo_akhir = $ewallet->saldo_akhir + $request['debit'];
             $ewallet->update(['saldo_akhir' => $saldo_akhir]);
             $ewallet->update(['debit' => $request['debit']]);
+            $ewallet->update(['kredit' => 0]);
             $ewallet->update(['keterangan' => 'Top Up saldo']);
-            
-            
+
+
         } elseif(isset($request['kredit'])){
             $ewallet = transaksi::where('user_id',$request['id'])->first();
+            $ewallet->update(['saldo_awal' => $ewallet->saldo_akhir]);
             $saldo_akhir = $ewallet->saldo_akhir - $request['kredit'];
             $ewallet->update(['saldo_akhir' => $saldo_akhir]);
+            $ewallet->update(['debit' => 0]);
             $ewallet->update(['kredit' => $request['kredit']]);
             $ewallet->update(['keterangan' => 'Penarikan saldo']);
         }

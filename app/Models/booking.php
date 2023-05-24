@@ -11,6 +11,10 @@ class booking extends Model
 
     protected $guarded = ['id'];
 
+    protected $fillable = [
+        'user_id', 'produk_id', 'nama_pemesan', 'nomor_hp', 'tanggal', 'total_harga', 'status'
+    ];
+
     public function user(){
         return $this->belongsTo(User::class);
     }

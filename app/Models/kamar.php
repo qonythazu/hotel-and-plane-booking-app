@@ -17,7 +17,6 @@ class kamar extends Model
         $query->when($filters['check_in'] ?? false, function($query, $check_in){
             $tanggal = date('Y-m-d', strtotime($check_in));
             return $query->whereDate('kamars.check_in', '=', $tanggal);
-
         });
 
         $query->when($filters['deskripsi'] ?? false, function($query, $desk){
@@ -25,6 +24,9 @@ class kamar extends Model
                 $query->where('produks.deskripsi', 'like', $desk);
             });
         });
+
+        $query->whereDate('kamars.check_in', '>=', now()->toDateString());
+
 
     }
 
