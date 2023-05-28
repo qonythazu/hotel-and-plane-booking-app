@@ -29,9 +29,15 @@ class jadwal extends Model
                 $query->where('jadwals.kota_tiba', 'like', $kotatiba);
             });
         });
+
+        $query->where('jadwals.jumlah', '>', 0);
     }
 
     public function produk(){
         return $this->belongsTo(produk::class);
+    }
+
+    public function booking(){
+        return $this->hasMany(booking::class);
     }
 }

@@ -16,7 +16,7 @@
             <div class="bgback p-3 pb-3 m-3 text-light rounded-2 d-flex flex-column">
                 <p class="pb-0 mb-0"><a href="/booking_pesawat" class="text-light"><i data-feather="arrow-left" style="width: 14px; height:14px"></i>&nbsp;kembali</a></p>
                 <hr class="pb-0 pt-0 mt-1 mb-3">
-                     <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->format('d F Y') }}</button></p>
+                     <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->translatedFormat('d F Y') }}</button></p>
                      <h5>Hasil Pencarian: <strong>Kota {{ request('kota_asal') }}</strong> <i class="fa-solid fa-arrow-right"></i><strong> Kota {{ request('kota_tiba') }}</strong></h5>
              </div>
                 <div class="bgback p-3 pb-3 m-3 rounded-2 text-white d-flex justify-content-center">
@@ -52,7 +52,7 @@
                         </td>
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
                             <div class="d-flex flex-column align-items-center">
-                                <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($p->berangkat)->format('H:i') }}</span>
+                                <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($berangkat)->translatedFormat('H:i') }}</span>
                                 <small>{{ $p->kota_asal }}</small>
                             </div>
                         </td>
@@ -64,7 +64,7 @@
                         </td>
                         <td class="text-center" style="vertical-align: middle;padding: 25px">
                             <div class="d-flex flex-column align-items-center">
-                                <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($p->tiba)->format('H:i')}}</span>
+                                <span style="font-size: 16pt">{{ \Carbon\Carbon::parse($tiba)->translatedFormat('H:i')}}</span>
                                 <small>{{ $p->kota_tiba }}</small>
                             </div>
                         </td>
@@ -72,15 +72,15 @@
                             <div class="d-flex flex-column align-items-end">
                                 <span class="fw-bold fs-5 mb-2">Rp.{{ number_format($p->harga)}}/orng</span>
                                 <div class="but plane btn-group" style="width: 150px;">
-                                    <a href="#" class="btn3 btn btn-sm">Booking</a>
+                                    <a href="{{ route('bookingP.detail',$p->id) }}" class="btn3 btn btn-sm">Booking</a>
                                 </div>
                             </div>
                         </td>
                         </tr>
                         @endforeach
                         @else
-                        <td colspan="5" class="text-center" style="vertical-align: middle;padding: 25px">
-                            <p>Data Tidak Ditemukan</p>
+                        <td colspan="12" class="text-center" style="vertical-align: middle;padding: 25px">
+                            <p style="color: #b8b8b8">Data Tidak Ditemukan</p>
                         </td>
                         @endif
                     </tbody>

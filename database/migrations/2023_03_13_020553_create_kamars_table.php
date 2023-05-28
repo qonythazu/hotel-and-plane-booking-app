@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('produk_id')->constrained();
             $table->integer('harga');
             $table->date('check_in');
-            $table->integer('jumlah');
+            $table->integer('jumlah')->default(0);
             $table->timestamps();
         });
     }
