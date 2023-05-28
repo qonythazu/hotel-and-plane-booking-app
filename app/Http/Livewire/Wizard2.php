@@ -2,20 +2,25 @@
 
 namespace App\Http\Livewire;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 use Livewire\Component;
 
 use App\Models\booking;
 use App\Models\transaksi;
 use App\Models\HistoryTransaksi;
-use App\Models\kamar;
+use App\Models\jadwal;
 use App\Models\produk;
 
-class Wizard extends Component
+use Carbon\Carbon;
+
+class Wizard2 extends Component
 {
     public $data;
     public $currentStep = 1;
-    public $user_id, $produk_id, $deskripsi, $kamar_id, $jadwal_id, $nomor_hp, $jumlah, $tanggal, $total_harga, $status, $malam;
+    public $user_id, $produk_id, $deskripsi, $kamar_id, $jadwal_id, $nomor_hp, $jumlah, $tanggal, $total_harga, $status;
+    public $tittle = [];
+    public $nama_penumpang = [];
     public $successMessage = '';
 
         public function mount()
@@ -33,10 +38,9 @@ class Wizard extends Component
      */
     public function render()
     {
-        return view('livewire.wizard');
+        return view('livewire.wizard2');
     }
-
-    /**
+/**
      * Write code on Method
      *
      * @return response()
@@ -45,8 +49,7 @@ class Wizard extends Component
     {
         foreach ($this->data as $d) {
         $validatedData = $this->validate([
-                'jumlah' => 'required|numeric|min:1|max:'. $d->jumlah,
-                'malam' => 'required|numeric|min:1|max:7'
+                'jumlah' => 'required|numeric|min:1|max:'. $d->jumlah
             ]);
         };
 
@@ -62,6 +65,8 @@ class Wizard extends Component
     {
         $validatedData = $this->validate([
             'nama_pemesan' => 'required',
+            'nama_penumpang' => 'required',
+            'tittle' => 'required',
             'nomor_hp' => 'required|numeric|digits_between:9,15',
         ]);
 
@@ -75,10 +80,22 @@ class Wizard extends Component
      */
     public function submitForm()
     {
+        $deskripsi = '';
+
+        foreach ($this->tittle as $index => $tittleValue) {
+            $penumpang = $this->nama_penumpang[$index];
+            $kode = strtoupper(Str::random(4));
+            foreach ($this->data as $d) {
+                $d1 = "$d->kota_asal &nbsp; -> ". Carbon::parse($d->tgl_pergi)->Format('l, d F Y') . " $d->waktu_pergi";
+                $d2 = "$d->kota_tiba &nbsp; -> ". Carbon::parse($d->tgl_tiba)->Format('l, d F Y') . " $d->waktu_tiba";
+            }
+            $deskripsi .= "<strong>Kode Booking: $kode<br>Passenger : $tittleValue. $penumpang</strong><br>$d1<br>$d2<br><br>";
+        }
+
         foreach ($this->data as $d) {
             $this->produk_id = $d->produk->id;
-            $this->total_harga = $d->harga*intval($this->malam)*intval($this->jumlah);
-            $id_kamar = $d->id;
+            $this->total_harga = $d->harga*intval($this->jumlah);
+            $id_jadwal = $d->id;
         };
 
 
@@ -90,26 +107,31 @@ class Wizard extends Component
             return;
         }
         // $arrr = [
-        //     $id_kamar,
         //     $this->user_id,
         //     $this->produk_id,
+        //     $id_jadwal,
         //     $this->nomor_hp,
         //     $this->tanggal,
         //     $this->total_harga,
         //     $this->status,
-        //     $this->nama_pemesan
+        //     $this->tittle,
+        //     $this->nama_penumpang,
+        //     $deskripsi,
+        //     $this->nama_pemesan,
+        //     $this->jumlah
         // ];
+
         // dd($arrr);
 
         Booking::create([
             'user_id' => $this->user_id,
             'produk_id' => $this->produk_id,
-            'kamar_id' => $id_kamar,
-            'jadwal_id' => null,
+            'kamar_id' => null,
+            'jadwal_id' => $id_jadwal,
             'tanggal' => $this->tanggal,
             'nama_pemesan' => $this->nama_pemesan,
             'nomor_hp' => $this->nomor_hp,
-            'deskripsi' => 'selama ' . $this->malam . ' malam',
+            'deskripsi' => $deskripsi,
             'qty' => $this->jumlah,
             'total_harga' => $this->total_harga,
             'status' => "lunas",
@@ -120,7 +142,7 @@ class Wizard extends Component
         $transaksi->debit = 0;
         $transaksi->kredit = $this->total_harga;
         foreach ($this->data as $d) {
-            $transaksi->keterangan = 'booking kamar ' . $d->produk->nama_produk .' '. $d->produk->deskripsi;
+            $transaksi->keterangan = 'Pesan Tiket Pesawat ' . $d->produk->nama_produk .' (' . $d->produk->deskripsi . ')'.' sebanyak '. $this->jumlah . ' kursi';
         };
         $transaksi->save();
 
@@ -131,15 +153,15 @@ class Wizard extends Component
         $ewallet->update(['debit' => 0]);
         $ewallet->update(['kredit' => $this->total_harga]);
         foreach ($this->data as $d) {
-            $ewallet->update(['keterangan' => 'booking kamar ' . $d->produk->nama_produk .' '. $d->produk->deskripsi ]);
+            $ewallet->update(['keterangan' => 'Pesan Tiket Pesawat ' . $d->produk->nama_produk .' (' . $d->produk->deskripsi . ')'.' sebanyak '. $this->jumlah . ' kursi' ]);
         };
 
-        $kamar = kamar::where('id',$id_kamar)->first();
-        $new_jumlah = $kamar->jumlah - intval($this->jumlah);
-        $kamar->update(['jumlah' => $new_jumlah]);
+        $kursi = jadwal::where('id',$id_jadwal)->first();
+        $new_jumlah = $kursi->jumlah - intval($this->jumlah);
+        $kursi->update(['jumlah' => $new_jumlah]);
 
-        if($kamar->jumlah <= 0){
-            $kamar->update(['jumlah' => 0]);
+        if($kursi->jumlah <= 0){
+            $kursi->update(['jumlah' => 0]);
         }
 
 
@@ -173,5 +195,7 @@ class Wizard extends Component
         $this->jumlah = '';
         $this->nama_pemesan = '';
         $this->nomor_hp = '';
+        $this->tittle = '';
+        $this->nama_penumpang = '';
     }
 }

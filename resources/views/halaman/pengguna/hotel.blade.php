@@ -15,12 +15,12 @@
                <p class="pb-0 mb-0"><a href="/booking_hotel" class="text-light"><i data-feather="arrow-left" style="width: 14px; height:14px"></i>&nbsp;kembali</a></p>
                <hr class="pb-0 pt-0 mt-1 mb-3">
                 @if(request('check_in') && request('deskripsi'))
-                    <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->format('d F Y') }}</button></p>
+                    <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->translatedFormat('d F Y') }}</button></p>
                     <h5>Hasil Pencarian: <strong>Kota {{ request('deskripsi') }}</strong></h5>
                 @elseif(empty(request('check_in')) && !empty(request('deskripsi')))
                     <h5>Hasil Pencarian: <strong>Kota {{ request('deskripsi') }}</strong></h5>
                 @elseif(!empty(request('check_in')) && empty(request('deskripsi')))
-                    <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->format('d F Y') }}</button></p>
+                    <p><button class="tgl btn btn-light" disabled>{{ \Carbon\Carbon::parse(request('check_in'))->translatedFormat('d F Y') }}</button></p>
                     <h5>Rekomendasi Hotel: </h5>
                 @else
                     <h5>Rekomendasi Hotel: </h5>
@@ -32,12 +32,12 @@
                         @if($produk->count())
                         @foreach ( $produk as $p )
                         <div class="col-md-3 mb-4">
-                            <div class="card {{ $p->check_in == \Carbon\Carbon::now()->tz("Asia/Makassar")->format('Y-m-d') ? 'card-disabled' : '' }}">
+                            <div class="card {{ $p->check_in == \Carbon\Carbon::now()->translatedFormat('Y-m-d') ? 'card-disabled' : '' }}">
                                 <img src="img/hotel.png" width="635px" class="card-img-top" alt="...">
                                 <div class="card-body d-flex flex-column">
                                     <h4 class="card-title d-flex justify-content-between align-items-end">
                                         <div class="col-6 ">{{ $p->produk->nama_produk }}</div>
-                                        <div class="col-6 text-end" style="font-size: 8pt;color:#9fa6b2;"><i>Tersedia pada <br> {{ \Carbon\Carbon::parse($p->check_in)->format('d F Y') }}</i></div>
+                                        <div class="col-6 text-end" style="font-size: 8pt;color:#9fa6b2;"><i>Tersedia pada <br> {{ \Carbon\Carbon::parse($p->check_in)->translatedFormat('d F Y') }}</i></div>
                                     </h4>
                                     <div class="card-text d-flex align-items-center">
                                         <i data-feather="map-pin" style="width: 14px; height:14px"></i>&nbsp;{{ $p->produk->deskripsi }}

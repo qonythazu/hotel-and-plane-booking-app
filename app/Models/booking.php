@@ -12,15 +12,23 @@ class booking extends Model
     protected $guarded = ['id'];
 
     protected $fillable = [
-        'user_id', 'produk_id', 'nama_pemesan', 'nomor_hp', 'tanggal', 'total_harga', 'status'
+    'user_id', 'produk_id', 'kamar_id', 'jadwal_id', 'nama_pemesan', 'nomor_hp', 'tanggal', 'qty', 'deskripsi', 'total_harga', 'status'
     ];
+
+    public function produk(){
+        return $this->belongsTo(produk::class);
+    }
 
     public function user(){
         return $this->belongsTo(User::class);
     }
 
-    public function produk(){
-        return $this->belongsTo(produk::class);
+    public function kamar(){
+        return $this->belongsTo(kamar::class);
+    }
+
+    public function jadwal(){
+        return $this->belongsTo(jadwal::class);
     }
 
 

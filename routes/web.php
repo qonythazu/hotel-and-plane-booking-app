@@ -4,13 +4,14 @@ use App\Models\produk;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\HalamanController;
-use App\Http\Controllers\SessionController;
-use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\EwalletController;
+use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\PesananController;
+use App\Http\Controllers\SessionController;
 
 
 use App\Http\Controllers\UserAccController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\BookingHotelController;
 use App\Http\Controllers\BookingPlaneController;
 /*
@@ -61,7 +62,9 @@ Route::group(['middleware' => 'userAdmin'], function () {
     Route::get('/booking_hotel', [HalamanController::class, 'pengguna_book_hotel']);
     Route::get('/booking_pesawat', [HalamanController::class, 'pengguna_book_plane']);
     Route::get('/pesawat_search', [HalamanController::class, 'pesawat']);
-    Route::get('/booking_hotel/{id}', [HalamanController::class, 'booking'])->name('booking.detail');
+    Route::get('/booking_hotel/{id}', [HalamanController::class, 'booking_hotel'])->name('booking.detail');
+    Route::get('/booking_plane/{id}', [HalamanController::class, 'booking_plane'])->name('bookingP.detail');
+    Route::get('/pesanan/{id}', [PesananController::class, 'pembatalan'])->name('pesanan.detail');
 });
 
 // PUNYA MITRA //

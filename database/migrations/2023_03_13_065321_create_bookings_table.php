@@ -19,15 +19,19 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('produk_id')->constrained();
+            $table->foreignId('kamar_id')->nullable()->constrained('kamars');
+            $table->foreignId('jadwal_id')->nullable()->constrained('jadwals');
             $table->date('tanggal');
             $table->string('nama_pemesan');
             $table->string('nomor_hp');
+            $table->text('deskripsi');
+            $table->integer('qty');
             $table->integer('total_harga');
             $table->string('status');
             $table->timestamps();
         });
 
-        
+
     }
 
     /**

@@ -13,7 +13,7 @@
                         {{Auth::user()->name}} | User
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="#">Pesanan Saya</a></li>
+                      <li><a class="dropdown-item" href="/pesanan_saya">Pesanan Saya</a></li>
                     </ul>
                   </li>
                 @else

@@ -10,7 +10,9 @@ use App\Models\produk;
 use App\Models\role;
 use App\Models\jadwal;
 use App\Models\kamar;
+use App\Models\booking;
 
+use Illuminate\Support\Facades\Auth;
 
 use DB;
 
@@ -109,7 +111,7 @@ class HalamanController extends Controller
         ]);
     }
 
-    function booking($id){
+    function booking_hotel($id){
         $data = kamar::with('produk')
             ->where('id','=',$id)
             ->get();
@@ -118,8 +120,28 @@ class HalamanController extends Controller
         ]);
     }
 
+    function booking_plane($id){
+        $data = jadwal::with('produk')
+            ->where('id','=',$id)
+            ->get();
+        return view("halaman/pengguna/bookingP",[
+            'data' => $data,
+        ]);
+    }
+
     function pesanan(){
-        return view("halaman/pengguna/pesanan");
+        $data1 = booking::with('kamar')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        $data2 = booking::with('jadwal')
+            ->where('user_id', Auth::user()->id)
+            ->get();
+
+        return view("halaman/pengguna/pesanan",[
+            'data1' => $data1,
+            'data2' => $data2
+        ]);
     }
     function tambah_produk(){
 
