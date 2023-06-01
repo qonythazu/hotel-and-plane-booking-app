@@ -11,6 +11,9 @@ use App\Http\Controllers\SessionController;
 
 
 use App\Http\Controllers\UserAccController;
+use App\Http\Controllers\AddHotelController;
+use App\Http\Controllers\AddJadwalController;
+use App\Http\Controllers\ProdukNewController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\BookingHotelController;
 use App\Http\Controllers\BookingPlaneController;
@@ -46,6 +49,13 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::resource('/ewallet', EwalletController::class);
 
+    Route::resource('/jadwal', AddJadwalController::class);
+    Route::resource('/kamar', AddHotelController::class);
+
+    Route::get('/form_tambah_jadwal/{id}', [HalamanController::class, 'jadwals']);
+    Route::get('/form_tambah_kamar/{id}', [HalamanController::class, 'kamars']);
+
+
     Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra']);
     Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel']);
     Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat']);
@@ -73,6 +83,8 @@ Route::group(['middleware' => 'mitraAdmin'], function () {
     Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra']);
 
 // PUNYA MITRA & ADMIN //
+
+    Route::resource('/produk', ProdukNewController::class);
     Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk']);
 });
 

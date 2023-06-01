@@ -63,8 +63,14 @@ class HalamanController extends Controller
     }
 
     function halaman_mitra(){
+        $data = User::with('transaksi')->get();
+        $produk = produk::with('jenis','user')
+                  ->where('produks.user_id','=',auth()->user()->id)
+                  ->get();
+
         return view("halaman/mitra/halaman_mitra",[
-            'data' => produk::all()
+            'data' => $produk,
+            'user' => $data
         ]);
     }
     function pengguna_book_hotel(){
@@ -144,8 +150,28 @@ class HalamanController extends Controller
         ]);
     }
     function tambah_produk(){
+        $produk = produk::with('jenis','user')->get();
 
-        return view("halaman/tambah_produk");
+        return view("halaman/tambah_produk",[
+            'produk' => $produk
+        ]);
+
+    }
+    function jadwals($id){
+        $data = produk::where('id','=',$id)
+            ->get();
+
+        return view("halaman/admin/form_tambah_jadwals",[
+            'produk' => $data
+        ]);
+    }
+    function kamars($id){
+        $data = produk::where('id','=',$id)
+            ->get();
+
+        return view("halaman/admin/form_tambah_kamar",[
+            'produk' => $data
+        ]);
     }
     function dashboard(){
         return view("halaman/dashboard");
@@ -158,9 +184,7 @@ class HalamanController extends Controller
         return view("halaman/admin/tabel_mitra")->with('data', $data);
     }
     function tabel_hotel(){
-       $data = produk::with('jenis')
-       ->where('produks.jenis_id', '=', 2)
-       ->get();
+       $data = kamar::with('produk')->get();
 
         return view("halaman/admin/tabel_hotel")->with('data', $data);
     }

@@ -17,10 +17,10 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('produk_id')->constrained();
-            $table->foreignId('kamar_id')->nullable()->constrained('kamars');
-            $table->foreignId('jadwal_id')->nullable()->constrained('jadwals');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('produk_id')->constrained()->onDelete('cascade');
+            $table->foreignId('kamar_id')->nullable()->constrained('kamars')->onDelete('cascade');
+            $table->foreignId('jadwal_id')->nullable()->constrained('jadwals')->onDelete('cascade');
             $table->date('tanggal');
             $table->string('nama_pemesan');
             $table->string('nomor_hp');
