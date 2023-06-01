@@ -17,7 +17,11 @@ class ProdukNewController extends Controller
      */
     public function index()
     {
-
+        $produk = produk::with('jenis', 'user')->get();
+        return view('halaman/mitra/tambah_produk',[
+            'produk' => $produk,
+            'acc' => User::all()
+        ]);
     }
 
     /**
@@ -49,7 +53,11 @@ class ProdukNewController extends Controller
 
         produk::create($datavalid);
 
-        return redirect('/halaman_mitra')->with('success', 'akun berhasil ditambahkan!');
+        if(auth()->user()->role_id == 1){
+            return redirect('/pengaturan_hotel_pesawat')->with('success', 'produk berhasil ditambahkan!');
+        } elseif(auth()->user()->role_id == 2){
+            return redirect('/halaman_mitra')->with('success', 'produk berhasil ditambahkan!');
+        }
     }
 
     /**
@@ -81,11 +89,11 @@ class ProdukNewController extends Controller
      */
     public function edit($id)
     {
-        $produk = produk::with('jenis','user')
-                 ->where('id', $id)->firstOrFail();
-
-        return view('halaman/tambah_produk2', [
-            'produk' => $produk
+        $produk = produk::where('id', $id)->firstOrFail();
+        return view('halaman/mitra/edit_produk', [
+            'produk' => $produk,
+            'jenis' => jenis::all(),
+            'acc' => User::all()
         ]);
 
 
@@ -97,26 +105,32 @@ class ProdukNewController extends Controller
      * @param  \App\Models\jenis  $jenis
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, jenis $jenis)
+    public function update(Request $request, $id)
     {
-        $produk = produk::find($jenis);
-        $productTypeValues = ['Pesawat', 'Hotel'];
+
+        $produk = produk::find($id);
 
         $datavalid = $request->validate([
-        'nama_produk' => 'max:255',
-        'produk' => [Rule::in($productTypeValues)],
-        'user_id' => 'required',
-        'deskripsi' => 'sometimes'
+        'nama_produk' => 'required|max:255',
+        'jenis_id' => 'required|numeric',
+        'user_id' => 'required|numeric',
+        'deskripsi' => 'required'
         ]);
 
+
         $produk->nama_produk = $datavalid['nama_produk'];
-        $produk->produk = $datavalid['produk'];
-        $produk->user_id = $datavalid['user_id'];
         $produk->deskripsi = $datavalid['deskripsi'];
+        $produk->user_id = $datavalid['user_id'];
+        $produk->jenis_id = $datavalid['jenis_id'];
 
         $produk->save();
 
-        return redirect('/halaman_mitra')->with('success', 'Jenis ' . $jenis->name . ' berhasil diperbarui.');
+        if(auth()->user()->role_id == 1){
+            return redirect('/pengaturan_hotel_pesawat')->with('success', 'produk ' . $produk->nama_produk . ' berhasil diperbarui.');
+        } elseif(auth()->user()->role_id == 2){
+            return redirect('/halaman_mitra')->with('success', 'produk ' . $produk->nama_produk . ' berhasil diperbarui.');
+        }
+
     }
 
     /**
@@ -130,6 +144,11 @@ class ProdukNewController extends Controller
         $produk = produk::find($id);
         $produk->delete();
 
-        return redirect('/halaman_mitra')->with('deleted', 'akun telah dihapus!');
+
+        if(auth()->user()->role_id == 1){
+            return redirect('/pengaturan_hotel_pesawat')->with('deleted', 'produk telah dihapus!');
+        } elseif(auth()->user()->role_id == 2){
+            return redirect('/halaman_mitra')->with('deleted', 'produk telah dihapus!');
+        }
     }
 }

@@ -71,7 +71,7 @@
             </div>
 
             <div class="form-floating">
-              <input type="text" name="jumlah" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
+              <input type="number" name="jumlah" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
               <label for="name">Stok</label>
                 @error('name')
                 <div class="invalid-feedback">
@@ -81,7 +81,7 @@
           </div>
 
           <div class="form-floating">
-            <input type="text" name="harga" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
+            <input type="number" name="harga" class="form-control  @error('name')is-invalid @enderror" id="name" placeholder="Name Example" required value="{{old('name')}}">
             <label for="name">Harga</label>
               @error('name')
               <div class="invalid-feedback">
@@ -91,7 +91,11 @@
         </div>
 
             <button class="w-100 btn btn-outline-light mt-4" type="submit">Tambah</button>
-            <a href="/lihat_jadwal" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
+            @if(Auth::user()->role_id == 1)
+                <a href="/tabel_pesawat" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
+            @elseif(Auth::user()->role_id == 2)
+                <a href="/halaman_mitra" class="w-100 btn btn-outline-light mt-2">Batal</i></a>
+            @endif
           </form>
         </main>
     </div>

@@ -49,18 +49,12 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::resource('/ewallet', EwalletController::class);
 
-    Route::resource('/jadwal', AddJadwalController::class);
-    Route::resource('/kamar', AddHotelController::class);
-
-    Route::get('/form_tambah_jadwal/{id}', [HalamanController::class, 'jadwals']);
-    Route::get('/form_tambah_kamar/{id}', [HalamanController::class, 'kamars']);
-
-
     Route::get('/tabel_mitra', [HalamanController::class, 'tabel_mitra']);
     Route::get('/tabel_hotel', [HalamanController::class, 'tabel_hotel']);
     Route::get('/tabel_pesawat', [HalamanController::class, 'tabel_pesawat']);
     Route::get('/form_tambah_hotelpesawat', [ProdukController::class, 'index']);
     Route::get('/tarik_uang_elektronik', [HalamanController::class, 'tarik_uang_elektronik']);
+    Route::get('/pengaturan_hotel_pesawat', [HalamanController::class, 'hotelpesawat']);
 });
 
 // PUNYA PENGGUNA //
@@ -83,9 +77,12 @@ Route::group(['middleware' => 'mitraAdmin'], function () {
     Route::get('/halaman_mitra', [HalamanController::class, 'halaman_mitra']);
 
 // PUNYA MITRA & ADMIN //
-
     Route::resource('/produk', ProdukNewController::class);
-    Route::get('/tambah_produk', [HalamanController::class, 'tambah_produk']);
+    Route::resource('/jadwal', AddJadwalController::class);
+    Route::resource('/kamar', AddHotelController::class);
+
+    Route::get('/form_tambah_jadwal/{id}', [HalamanController::class, 'jadwals']);
+    Route::get('/form_tambah_kamar/{id}', [HalamanController::class, 'kamars']);
 });
 
 // PUNYA UMUM //
