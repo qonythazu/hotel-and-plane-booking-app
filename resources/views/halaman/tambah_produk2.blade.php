@@ -30,7 +30,7 @@
             <div class="formselect">
                 <select class="form-select" aria-label="Default select example" name="jenis_id" required>
                     <option selected="" disabled="">Tipe</option>
-                    @foreach ($produk->unique('jenis_id') as $p)
+                    @foreach ($produk as $p)
                         @if (old('jenis_id') == $p->jenis->id)
                         <option value="{{ $p->jenis->id }}" selected> {{ $p->jenis->jenis }} </option>
                         @else

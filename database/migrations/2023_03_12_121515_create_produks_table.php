@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_produk');
             $table->text('deskripsi');
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('jenis_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('jenis_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

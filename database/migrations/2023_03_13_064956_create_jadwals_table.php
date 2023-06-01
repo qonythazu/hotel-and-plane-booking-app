@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('produk_id')->constrained();
+            $table->foreignId('produk_id')->constrained()->onDelete('cascade');
             $table->string('kota_asal');
             $table->string('kota_tiba');
             $table->date('tgl_pergi');
