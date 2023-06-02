@@ -12,7 +12,7 @@
         @endif
 
         <h4 class="data-hotel">Data Pesawat</h4>
-        <table class="table table-bordered table-light">
+        <table class="table table-bordered table-light  text-center">
             <thead>
             <tr>
                 <th scope="col">#</th>
@@ -28,8 +28,8 @@
                         <th scope="row">{{ $d+1 }}</th>
                         <td>{{ $item->produk->nama_produk }} </td>
                         <td>{{ $item->produk->deskripsi }}</td>
-                        <td><a href="/form_tambah_jadwal/{{ $item->produk->id }}" class="btn3 btn btn-sm btn-light">Tambah Jadwal</a>
-                            <span type="button" class="btn3 btn btn-sm btn-dark" style="color:white" data-bs-toggle="modal" data-bs-target="#pesawat-{{$item->id}}">Lihat Jadwal</span>
+                        <td><a href="/form_tambah_jadwal/{{ $item->produk->id }}" class="btn3 btn btn-sm btn-outline-dark btn-light">Tambah Jadwal</a>
+                            <span type="button" class="btn btn-a btn-sm" style="color:white" data-bs-toggle="modal" data-bs-target="#pesawat-{{$item->id}}">Lihat Jadwal</span>
 
                         {{-- <td>
                             <span>
@@ -41,6 +41,7 @@
                 @endforeach
             </tbody>
         </table>
+        <a href="/dashboard_admin" class="btn btn-a my-2">kembali</a>
     </div>
 
 @foreach ( $data as $dat )
@@ -62,6 +63,7 @@
                         <th>Waktu</th>
                         <th>Harga</th>
                         <th>Stok</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -74,6 +76,14 @@
                             <td>{{ $item->waktu_pergi }}-{{ $item->waktu_tiba }}</td>
                             <td>Rp. {{ number_format($item->harga,2,',','.') }}</td>
                             <td>{{ $item->jumlah }}</td>
+                            <td>
+                                <form action="{{ route('jadwal.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger" style="font-size: 1px;" onclick="return confirm('Yakin ingin menghapus data?')"><i data-feather="trash-2"></i></button>
+                                </form>
+                                <a href="jadwal/{{ $item->id }}/edit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                            </td>
                         </tr>
                         @endif
                         @endforeach

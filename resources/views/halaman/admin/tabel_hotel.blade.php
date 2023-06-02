@@ -29,19 +29,20 @@
                         <td>{{ $item->produk->nama_produk }}</td>
                         <td>{{ $item->produk->deskripsi }}</td>
                         <td>
-                            <a href="/form_tambah_kamar/{{ $item->produk->id }}" class="btn3 btn btn-sm btn-light">Tambah Kamar</a>
-                            <span type="button" class="btn3 btn btn-sm btn-dark" style="color:white" data-bs-toggle="modal" data-bs-target="#hotel-{{$item->id}}">Lihat Kamar</span>
+                            <a href="/form_tambah_kamar/{{ $item->produk->id }}" class="btn3 btn btn-sm btn-outline-dark btn-light">Tambah Kamar</a>
+                            <span type="button" class="btn btn-a btn-sm" style="color:white" data-bs-toggle="modal" data-bs-target="#hotel-{{$item->id}}">Lihat Kamar</span>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <a href="/dashboard_admin" class="btn btn-a my-2">kembali</a>
     </div>
 
 @foreach ( $data as $dat )
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="width:1500px">
     <div class="modal fade" id="hotel-{{$dat->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal">
               <h5 class="modal-title" id="staticBackdropLabel">List Kamar</h5>
@@ -55,6 +56,7 @@
                         <th>Tersedia Pada</th>
                         <th>Harga Per Malam</th>
                         <th>Jumlah Kamar Tersedia</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -65,6 +67,14 @@
                                 <td>{{ \Carbon\Carbon::parse($item->check_in)->translatedFormat('d F Y')}}</td>
                                 <td>Rp. {{ number_format($item->harga,2,',','.') }}</td>
                                 <td>{{ $item->jumlah }}</td>
+                                <td>
+                                    <form action="{{ route('kamar.destroy', $item->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger" style="font-size: 1px;" onclick="return confirm('Yakin ingin menghapus data?')"><i data-feather="trash-2"></i></button>
+                                    </form>
+                                    <a href="kamar/{{ $item->id }}/edit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
+                                </td>
                             </tr>
                         @endif
                         @endforeach

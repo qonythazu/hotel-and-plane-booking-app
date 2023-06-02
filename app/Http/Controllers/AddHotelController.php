@@ -24,7 +24,7 @@ class AddHotelController extends Controller
      */
     public function create()
     {
-        return view("halaman/admin/form_tambah_kamar");
+        return view("halaman/mitra/form_tambah_kamar");
     }
 
     /**
@@ -43,7 +43,12 @@ class AddHotelController extends Controller
         ]);
 
         kamar::create($datavalid);
-        return redirect('/tabel_hotel')->with('success', 'jadwal berhasil ditambahkan!');
+        if(auth()->user()->role_id == 1){
+            return redirect('/tabel_hotel')->with('success', 'kamar berhasil ditambahkan!');
+        } elseif(auth()->user()->role_id == 2){
+            return redirect('/halaman_mitra')->with('success', 'kamar berhasil ditambahkan!');
+        }
+
     }
 
     /**
@@ -63,9 +68,12 @@ class AddHotelController extends Controller
      * @param  \App\Models\kamar  $kamar
      * @return \Illuminate\Http\Response
      */
-    public function edit(kamar $kamar)
+    public function edit($id)
     {
-        //
+        $data = kamar::where('id', $id)->firstOrFail();
+        return view("halaman/mitra/form_edit_kamar",[
+            'produk' => $data
+        ]);
     }
 
     /**
@@ -75,9 +83,26 @@ class AddHotelController extends Controller
      * @param  \App\Models\kamar  $kamar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, kamar $kamar)
+    public function update(Request $request, $id)
     {
-        //
+        $kamar = kamar::find($id);
+        $datavalid = $request->validate([
+            'harga' => 'required|numeric',
+            'check_in' => 'required',
+            'jumlah' => 'required|numeric'
+        ]);
+
+        $kamar->check_in = $datavalid['check_in'];
+        $kamar->harga = $datavalid['harga'];
+        $kamar->jumlah = $datavalid['jumlah'];
+
+        $kamar->save();
+
+        if(auth()->user()->role_id == 1){
+            return redirect('/tabel_hotel')->with('success', 'kamar berhasil diubah!');
+        } elseif(auth()->user()->role_id == 2){
+            return redirect('/halaman_mitra')->with('success', 'kamar berhasil diubah!');
+        }
     }
 
     /**
@@ -86,8 +111,15 @@ class AddHotelController extends Controller
      * @param  \App\Models\kamar  $kamar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(kamar $kamar)
+    public function destroy($id)
     {
-        //
+        $kamar = kamar::find($id);
+        $kamar->delete();
+
+        if(auth()->user()->role_id == 1){
+            return redirect('/tabel_hotel')->with('deleted', 'kamar berhasil dihapus!');
+        } elseif(auth()->user()->role_id == 2){
+            return redirect('/halaman_mitra')->with('deleted', 'kamar berhasil dihapus!');
+        }
     }
 }

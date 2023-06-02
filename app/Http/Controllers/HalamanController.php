@@ -42,8 +42,14 @@ class HalamanController extends Controller
     }
 
 
-    function pengaturan(){
-        return view("halaman/admin/pengaturan_hotelpesawat");
+    function hotelpesawat(){
+        $data = produk::with('jenis', 'user')
+                ->orderBy('jenis_id')
+                ->orderBy('nama_produk')
+                ->get();
+        return view("halaman/admin/pengaturan_hotelpesawat",[
+            'data' => $data
+        ]);
     }
 
     function isi_uang_elektronik(){
@@ -63,14 +69,21 @@ class HalamanController extends Controller
     }
 
     function halaman_mitra(){
-        $data = User::with('transaksi')->get();
+        $jadwal = jadwal::all();
+        $kamar = kamar::all();
+        $user = User::with('transaksi')->get();
         $produk = produk::with('jenis','user')
                   ->where('produks.user_id','=',auth()->user()->id)
+                  ->orderBy('jenis_id')
+                  ->orderBy('nama_produk')
                   ->get();
 
+        // dd($jadwal);
         return view("halaman/mitra/halaman_mitra",[
-            'data' => $produk,
-            'user' => $data
+            'produk' => $produk,
+            'user' => $user,
+            'jadwal' => $jadwal,
+            'kamar' => $kamar
         ]);
     }
     function pengguna_book_hotel(){
@@ -149,19 +162,12 @@ class HalamanController extends Controller
             'data2' => $data2
         ]);
     }
-    function tambah_produk(){
-        $produk = produk::with('jenis','user')->get();
 
-        return view("halaman/tambah_produk",[
-            'produk' => $produk
-        ]);
-
-    }
     function jadwals($id){
         $data = produk::where('id','=',$id)
             ->get();
 
-        return view("halaman/admin/form_tambah_jadwals",[
+        return view("halaman/mitra/form_tambah_jadwals",[
             'produk' => $data
         ]);
     }
@@ -169,7 +175,7 @@ class HalamanController extends Controller
         $data = produk::where('id','=',$id)
             ->get();
 
-        return view("halaman/admin/form_tambah_kamar",[
+        return view("halaman/mitra/form_tambah_kamar",[
             'produk' => $data
         ]);
     }
