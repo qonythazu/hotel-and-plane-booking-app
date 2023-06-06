@@ -17,17 +17,17 @@ npm install
 ```
 php artisan key:generate
 ```
-- lanjut install **sluggable**. cek di ``composer.json`` bagian "require" pastiin sudah ada ini <br><br>
+- lanjut install [sluggable](https://github.com/cviebrock/eloquent-sluggable). cek di ``composer.json`` bagian "require" pastiin sudah ada ini <br><br>
 <img src="public/img/step1.png" width="400px" alt="require-sluggable"></a>
 - kalo belum isi dulu kayak gitu
 ```
 "cviebrock/eloquent-sluggable": "^9.0",
 ```
-- lanjut! &nbsp; ``nb: kalau gabisa di terminal pake Command Prompt``
+- lanjut! &nbsp; -- _nb: kalau gabisa di terminal pake Command Prompt_
 ```
 composer require cviebrock/eloquent-sluggable
 ```
-- install juga **livewire** &nbsp; ``nb: kalau gabisa di terminal pake Command Prompt``
+- install juga [livewire](https://laraveltuts.com/laravel-9-livewire-multi-step-form-wizard-tutorial/) &nbsp; -- _nb: kalau gabisa di terminal pake Command Prompt_
 ``` 
 composer require livewire/livewire
 ```
