@@ -18,28 +18,32 @@
                 <th scope="col">Nama Hotel</th>
                 <th scope="col">Kota</th>
                 <th scope="col">Action</th>
-
-                {{-- <th scope="col">Action</th>                 --}}
             </tr>
             </thead>
             <tbody>
-                @foreach ($data->unique('produk_id') as $d => $item)
+                @foreach ($data as $d => $item)
+                @if ($item->jenis_id == 2)
                     <tr>
                         <th scope="row">{{ $d+1 }}</th>
-                        <td>{{ $item->produk->nama_produk }}</td>
-                        <td>{{ $item->produk->deskripsi }}</td>
+                        <td>{{ $item->nama_produk }}</td>
+                        <td>{{ $item->deskripsi }}</td>
                         <td>
-                            <a href="/form_tambah_kamar/{{ $item->produk->id }}" class="btn3 btn btn-sm btn-outline-dark btn-light">Tambah Kamar</a>
-                            <span type="button" class="btn btn-a btn-sm" style="color:white" data-bs-toggle="modal" data-bs-target="#hotel-{{$item->id}}">Lihat Kamar</span>
+                            <a href="/form_tambah_kamar/{{ $item->id }}" class="btn3 btn btn-sm btn-outline-dark btn-light">Tambah Kamar</a>
+                            @foreach ( $kamar->unique('produk_id') as $k )
+                                @if($k->produk_id == $item->id)
+                                    <span type="button" class="btn btn-a btn-sm" style="color:white" data-bs-toggle="modal" data-bs-target="#hotel-{{$k->id}}">Lihat Kamar</span>
+                                @endif
+                            @endforeach
                         </td>
                     </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>
         <a href="/dashboard_admin" class="btn btn-a my-2">kembali</a>
     </div>
 
-@foreach ( $data as $dat )
+@foreach ( $kamar as $dat )
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="width:1500px">
     <div class="modal fade" id="hotel-{{$dat->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -60,7 +64,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $data as $d => $item )
+                        @foreach ( $kamar as $d => $item )
                         @if ($item->produk_id == $dat->produk_id)
                             <tr>
                                 <th scope="row"></th>

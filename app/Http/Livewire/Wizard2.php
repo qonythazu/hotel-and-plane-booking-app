@@ -96,6 +96,7 @@ class Wizard2 extends Component
             $this->produk_id = $d->produk->id;
             $this->total_harga = $d->harga*intval($this->jumlah);
             $id_jadwal = $d->id;
+            $pemilik = $d->produk->user_id;
         };
 
 
@@ -155,6 +156,14 @@ class Wizard2 extends Component
         foreach ($this->data as $d) {
             $ewallet->update(['keterangan' => 'Pesan Tiket Pesawat ' . $d->produk->nama_produk .' (' . $d->produk->deskripsi . ')'.' sebanyak '. $this->jumlah . ' kursi' ]);
         };
+
+        $pemilik = transaksi::where('user_id', $pemilik)->first();
+        $pemilik->update(['saldo_awal' => $pemilik->saldo_akhir]);
+        $saldo_akhir = $pemilik->saldo_akhir + $this->total_harga;
+        $pemilik->update(['saldo_akhir' => $saldo_akhir]);
+        $pemilik->update(['debit' => 0]);
+        $pemilik->update(['kredit' => $this->total_harga]);
+        $pemilik->update(['keterangan' => 'pesanan masuk']);
 
         $kursi = jadwal::where('id',$id_jadwal)->first();
         $new_jumlah = $kursi->jumlah - intval($this->jumlah);

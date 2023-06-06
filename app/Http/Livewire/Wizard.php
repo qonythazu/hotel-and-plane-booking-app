@@ -78,6 +78,7 @@ class Wizard extends Component
         foreach ($this->data as $d) {
             $this->produk_id = $d->produk->id;
             $this->total_harga = $d->harga*intval($this->malam)*intval($this->jumlah);
+            $pemilik = $d->produk->user_id;
             $id_kamar = $d->id;
         };
 
@@ -133,6 +134,15 @@ class Wizard extends Component
         foreach ($this->data as $d) {
             $ewallet->update(['keterangan' => 'booking kamar ' . $d->produk->nama_produk .' '. $d->produk->deskripsi ]);
         };
+
+        $pemilik = transaksi::where('user_id', $pemilik)->first();
+        $pemilik->update(['saldo_awal' => $pemilik->saldo_akhir]);
+        $saldo_akhir = $pemilik->saldo_akhir + $this->total_harga;
+        $pemilik->update(['saldo_akhir' => $saldo_akhir]);
+        $pemilik->update(['debit' => 0]);
+        $pemilik->update(['kredit' => $this->total_harga]);
+        $pemilik->update(['keterangan' => 'pesanan masuk']);
+
 
         $kamar = kamar::where('id',$id_kamar)->first();
         $new_jumlah = $kamar->jumlah - intval($this->jumlah);
