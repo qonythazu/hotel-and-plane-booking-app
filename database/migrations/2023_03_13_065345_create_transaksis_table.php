@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('keterangan');
             $table->timestamps();
         });
-        
+
     }
 
     /**

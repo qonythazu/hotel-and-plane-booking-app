@@ -23,28 +23,27 @@
             </tr>
             </thead>
             <tbody>
-                @foreach ($data->unique('produk_id') as $d => $item)
+                @foreach ($data as $d => $item)
+                @if($item->jenis_id == 1)
                     <tr>
                         <th scope="row">{{ $d+1 }}</th>
-                        <td>{{ $item->produk->nama_produk }} </td>
-                        <td>{{ $item->produk->deskripsi }}</td>
-                        <td><a href="/form_tambah_jadwal/{{ $item->produk->id }}" class="btn3 btn btn-sm btn-outline-dark btn-light">Tambah Jadwal</a>
-                            <span type="button" class="btn btn-a btn-sm" style="color:white" data-bs-toggle="modal" data-bs-target="#pesawat-{{$item->id}}">Lihat Jadwal</span>
-
-                        {{-- <td>
-                            <span>
-                                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                <a href="#" class="btn btn-success"><i class="fa-solid fa-pen-to-square"></i></a>
-                            </span>
-                        </td> --}}
+                        <td>{{ $item->nama_produk }} </td>
+                        <td>{{ $item->deskripsi }}</td>
+                        <td><a href="/form_tambah_jadwal/{{ $item->id }}" class="btn3 btn btn-sm btn-outline-dark btn-light">Tambah Jadwal</a>
+                            @foreach ( $jadwal->unique('produk_id') as $j )
+                                @if($j->produk_id == $item->id)
+                                    <span type="button" class="btn btn-a btn-sm" style="color:white" data-bs-toggle="modal" data-bs-target="#pesawat-{{$j->id}}">Lihat Jadwal</span>
+                                @endif
+                            @endforeach
                     </tr>
+                @endif
                 @endforeach
             </tbody>
         </table>
         <a href="/dashboard_admin" class="btn btn-a my-2">kembali</a>
     </div>
 
-@foreach ( $data as $dat )
+@foreach ( $jadwal as $dat )
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
     <div class="modal fade" id="pesawat-{{$dat->id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
@@ -67,7 +66,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach ( $data as $d => $item )
+                        @foreach ( $jadwal as $d => $item )
                         @if ($item->produk_id == $dat->produk_id)
                         <tr>
                             <th scope="row"></th>

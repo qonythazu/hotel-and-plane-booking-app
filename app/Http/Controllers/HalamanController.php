@@ -190,14 +190,21 @@ class HalamanController extends Controller
         return view("halaman/admin/tabel_mitra")->with('data', $data);
     }
     function tabel_hotel(){
-       $data = kamar::with('produk')->get();
+        $data = produk::orderBy('nama_produk')->get();
+        $kamar = kamar::with('produk')->get();
 
-        return view("halaman/admin/tabel_hotel")->with('data', $data);
+        return view("halaman/admin/tabel_hotel",[
+            'data' => $data,
+            'kamar' => $kamar
+        ]);
     }
     function tabel_pesawat(){
-        $data = jadwal::with('produk')
-        ->get();
+        $data = produk::orderBy('nama_produk')->get();
+        $jadwal = jadwal::with('produk')->get();
 
-         return view("halaman/admin/tabel_pesawat")->with('data', $data);
+        return view("halaman/admin/tabel_pesawat",[
+            'data' => $data,
+            'jadwal' => $jadwal
+        ]);
      }
 }

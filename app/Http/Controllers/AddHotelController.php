@@ -113,6 +113,7 @@ class AddHotelController extends Controller
      */
     public function destroy($id)
     {
+        // dd($id);
         $kamar = kamar::find($id);
         $kamar->delete();
 
