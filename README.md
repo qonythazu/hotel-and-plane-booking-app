@@ -28,10 +28,11 @@ php artisan key:generate
 composer require cviebrock/eloquent-sluggable
 ```
 - install juga **livewire** &nbsp; ``nb: kalau gabisa di terminal pake Command Prompt``
-```
+``` 
 composer require livewire/livewire
 ```
 - terakhir jangan lupa
 ```
 php artisan migrate:fresh --seed
 ```
+> Selamat Mencoba 🙂
