@@ -371,3 +371,8 @@ fieldset:disabled .tgl {
     opacity: 0.4;
     pointer-events: none;
 }
+
+.modal-footer .btn-d {
+    background-color: #e78bbb;
+    color: white;
+}

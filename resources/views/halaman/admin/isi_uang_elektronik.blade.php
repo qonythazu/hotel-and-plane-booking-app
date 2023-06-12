@@ -14,21 +14,17 @@
                 <div class="hasil-pencarian bgback p-3 m-3 text-white rounded-2">
                     <h5>Hasil Pencarian</h5>
                     @if ($data->count())
-                        <ul>
                             @foreach ($data as $d)
-                                <li>
-                                    {{ $d->User->name }} Saldo Akhir: Rp. {{ number_format(($d->saldo_akhir ? $d->saldo_akhir : '0'),2,',','.') }}
+                                    <p>{{ $d->User->name }} Saldo Akhir: Rp. {{ number_format(($d->saldo_akhir ? $d->saldo_akhir : '0'),2,',','.') }}</p>
                                     <div>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#debitsaldo-{{$d->user_id}}">
+                                        <button type="button" class="btn btn-a btn-sm" data-bs-toggle="modal" data-bs-target="#debitsaldo-{{$d->user_id}}">
                                             Tambah
                                         </button>
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#kreditsaldo-{{$d->user_id}}">
+                                        <button type="button" class="btn btn-a btn-sm" data-bs-toggle="modal" data-bs-target="#kreditsaldo-{{$d->user_id}}">
                                             Tarik Uang
                                         </button>
                                     </div>
-                                </li>
                             @endforeach
-                        </ul>
                     @else
                         <p>Tidak ada hasil pencarian.</p>
                     @endif
@@ -49,8 +45,8 @@
                                     <input type="text" name="debit" class="form-control">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-success">Tambah</button>
+                                    <button type="button" class="btn btn-d" data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-d">Tambah</button>
                                 </div>
                             </form>
                         </div>
@@ -73,8 +69,8 @@
                                     <input type="text" name="kredit" class="form-control">
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Batal</button>
-                                    <button type="submit" class="btn btn-success">Tarik</button>
+                                    <button type="button" class="btn btn-d" data-bs-dismiss="modal">Batal</button>
+                                    <button type="submit" class="btn btn-d">Tarik</button>
                                 </div>
                             </form>
                         </div>
